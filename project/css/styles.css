@@ -1,0 +1,22 @@
+html {
+    background-color: black;
+    color: white;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+  }
+  
+  td, th {
+    border: 1px solid white;
+    text-align: left;
+  }
+  
+  tr:nth-child(even) {
+    background-color: grey;
+  }
+
+  li {
+    display: inline-block;
+  }

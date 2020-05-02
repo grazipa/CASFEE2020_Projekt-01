@@ -1,11 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="./images/notes.png">
+        <script src="https://kit.fontawesome.com/ba5d6b8461.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./css/styles.css" />
+        <title>Notes-App</title>
+    </head>
+    <body>
+        <header>
+            <img src="./images/notes.png" alt="Notes-App">
+            <h1>Notes-App</h1>
+            <select id="cars">
+                <option value="dark">Dark-Mode</option>
+                <option value="bright">Bright-Mode</option>
+            </select>
+        </header>
+
+        <main>
+            <section>
+                <input type="text" placeholder="Search.." name="search">
+                <button type="button"><i class="fas fa-plus"></i> Add new note</button>
+                <!--Add modal window https://www.w3schools.com/howto/howto_css_modals.asp -->
+                <table>
+                    <tr>
+                        <th>Title <i class="fas fa-sort"></i></th>
+                        <th>Priority <i class="fas fa-sort"></i></th>
+                        <th>State <i class="fas fa-sort"></i></th>
+                        <th>Creation date <i class="fas fa-sort"></i></th>
+                        <th>Due date <i class="fas fa-sort"></i></th>
+                        <th>Date finished <i class="fas fa-sort"></i></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>Think about layout</td>
+                        <td>1</td>
+                        <td>Done</td>
+                        <td>02.05.2020</td>
+                        <td>02.05.2020</td>
+                        <td>02.05.2020</td>
+                        <td><i class="fas fa-pencil-alt"></i><i class="fas fa-check"></i><i class="fas fa-trash-alt"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Create mockup</td>
+                        <td>1</td>
+                        <td>In progress</td>
+                        <td>02.05.2020</td>
+                        <td>02.05.2020</td>
+                        <td>-</td>
+                        <td><i class="fas fa-pencil-alt"></i><i class="fas fa-check"></i><i class="fas fa-trash-alt"></i></td>
+                    </tr>
+                </table>
+                <input type="checkbox" name="show_donenotes" id="show_donenotes">
+                <label for="show_donenotes"> Show done notes</label>
+                <nav>
+                    <ul>
+                        <li><i class="fas fa-backward"></i></li>
+                        <li><i class="fas fa-caret-left"></i></li>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li><i class="fas fa-caret-right"></i></li>
+                        <li><i class="fas fa-forward"></i></li>
+                    </ul>
+                </nav>
+                <select id="cars">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            </section>
+        </main>
+
+        <footer>
+            <p>Copyright &copy; 2020 by Patrick</p>
+        </footer>
+        <script src="./scripts/scripts.js"></script>
+    </body>
 </html>
