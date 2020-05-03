@@ -12,7 +12,7 @@
         <header>
             <img src="./images/notes.png" alt="Notes-App">
             <h1>Notes-App</h1>
-            <select id="cars">
+            <select>
                 <option value="dark">Dark-Mode</option>
                 <option value="bright">Bright-Mode</option>
             </select>
@@ -21,8 +21,7 @@
         <main>
             <section>
                 <input type="text" placeholder="Search.." name="search">
-                <button type="button"><i class="fas fa-plus"></i> Add new note</button>
-                <!--Add modal window https://www.w3schools.com/howto/howto_css_modals.asp -->
+                <button type="button" id="myBtn"><i class="fas fa-plus"></i> Add new note</button>
                 <table>
                     <tr>
                         <th>Title <i class="fas fa-sort"></i></th>
@@ -77,6 +76,40 @@
         <footer>
             <p>Copyright &copy; 2020 by Patrick</p>
         </footer>
+
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1>Add new note</h1>
+                <form>
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title"><br>
+                    <label for="priority">Priority:</label>
+                    <select id="priority" name="priority">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <label for="duedate">Due date:</label>
+                    <input type="date" id="duedate" name="duedate"><br>
+                    <label for="note">Note:</label><br>
+                    <textarea rows="5" cols="60" name="note">
+                        Enter details here...
+                     </textarea><br>
+                     <button type="button"><i class="fas fa-plus"></i> Add</button>
+                     <button type="button"><i class="far fa-window-close"></i> Cancel</button>
+                     <button type="button"><i class="fas fa-trash-alt"></i> Remove</button>
+                  </form>
+            </div>
+        
+        </div>
+
         <script src="./scripts/scripts.js"></script>
     </body>
 </html>
