@@ -1,0 +1,112 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+.container {
+    display: grid;
+    min-height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "header"
+      "navigation"
+      "content"
+      "footer";
+}
+
+.main-header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    border-bottom: 2px solid black;
+    background-color: #383838;
+}
+
+.main-header-style {
+    margin: 10px;
+}
+
+.main-header-logo{
+    height: 90px;
+    margin: 15px;
+    border-radius: 10%;
+    transform: rotate(-20deg);
+}
+
+.no-url {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.main-nav {
+    grid-area: navigation;
+    background-color: gray;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-row-gap: 5px;
+    padding: 5px;
+}
+
+.main-content {
+    grid-area: content;
+    background-color: DarkGray ;
+    padding: 10px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.main-content-card{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    margin: 10px;
+    border: 2px solid black;
+}
+
+.main-content-card-header {
+    border-bottom: 2px solid black;
+    background-color: #383838;
+    padding: 10px;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.main-footer {
+    grid-area: footer;
+    background-color: gray;
+    text-align: center;
+}
+
+.content-card {
+    background-color: white;
+    margin: 10px;
+    border: 2px solid black;
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    float: left;
+    
+}
+
+.content-card-header {
+    border-bottom: 2px solid black;
+    padding: 5px;
+    font-weight: bold;
+    font-size: large;
+}
+
+.content-card-footer {
+    border-top: 2px solid black;
+}
+
+.main-content-card-body {
+    background-color: gray;
+}
+
+.main-footer {
+    font-size: medium;
+    font-weight: bold;
+}

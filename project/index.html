@@ -5,111 +5,203 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" type="image/x-icon" href="./images/notes.png">
         <script src="https://kit.fontawesome.com/ba5d6b8461.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="./css/styles.css" />
+        <link rel="stylesheet" href="./css/grid_styles.css" />
         <title>Notes-App</title>
     </head>
     <body>
-        <header>
-            <img src="./images/notes.png" alt="Notes-App">
-            <h1>Notes-App</h1>
+      <div class="container">
+        <header class="main-header">
+          <a class="no-url" href="#"><img class="main-header-logo" src="./images/notes.png" alt="Notes-App"></a>
+          <h1 class="main-header-title"><a class="no-url" href="#">Notes-App</a></h1>
+          <div class="main-header-style">
             <select>
-                <option value="dark">Dark-Mode</option>
-                <option value="bright">Bright-Mode</option>
+              <option value="dark">Dark-Mode</option>
+              <option value="bright">Bright-Mode</option>
             </select>
+          </div>
         </header>
-
-        <main>
-            <section>
-                <input type="text" placeholder="Search.." name="search">
-                <button type="button" id="myBtn"><i class="fas fa-plus"></i> Add new note</button>
-                <table>
-                    <tr>
-                        <th>Title <i class="fas fa-sort"></i></th>
-                        <th>Priority <i class="fas fa-sort"></i></th>
-                        <th>State <i class="fas fa-sort"></i></th>
-                        <th>Creation date <i class="fas fa-sort"></i></th>
-                        <th>Due date <i class="fas fa-sort"></i></th>
-                        <th>Date finished <i class="fas fa-sort"></i></th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <td>Think about layout</td>
-                        <td>1</td>
-                        <td>Done</td>
-                        <td>02.05.2020</td>
-                        <td>02.05.2020</td>
-                        <td>02.05.2020</td>
-                        <td><i class="fas fa-pencil-alt"></i><i class="fas fa-check"></i><i class="fas fa-trash-alt"></i></td>
-                    </tr>
-                    <tr>
-                        <td>Create mockup</td>
-                        <td>1</td>
-                        <td>In progress</td>
-                        <td>02.05.2020</td>
-                        <td>02.05.2020</td>
-                        <td>-</td>
-                        <td><i class="fas fa-pencil-alt"></i><i class="fas fa-check"></i><i class="fas fa-trash-alt"></i></td>
-                    </tr>
-                </table>
-                <input type="checkbox" name="show_donenotes" id="show_donenotes">
-                <label for="show_donenotes"> Show done notes</label>
-                <nav>
-                    <ul>
-                        <li><i class="fas fa-backward"></i></li>
-                        <li><i class="fas fa-caret-left"></i></li>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li><i class="fas fa-caret-right"></i></li>
-                        <li><i class="fas fa-forward"></i></li>
-                    </ul>
-                </nav>
-                <select id="cars">
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                </select>
-            </section>
-        </main>
-
-        <footer>
-            <p>Copyright &copy; 2020 by Patrick</p>
-        </footer>
-
-
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h1>Add new note</h1>
-                <form>
-                    <label for="title">Title:</label>
-                    <input type="text" id="title" name="title"><br>
-                    <label for="priority">Priority:</label>
-                    <select id="priority" name="priority">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <label for="duedate">Due date:</label>
-                    <input type="date" id="duedate" name="duedate"><br>
-                    <label for="note">Note:</label><br>
-                    <textarea rows="5" cols="60" name="note">
-                        Enter details here...
-                     </textarea><br>
-                     <button type="button"><i class="fas fa-plus"></i> Add</button>
-                     <button type="button"><i class="far fa-window-close"></i> Cancel</button>
-                     <button type="button"><i class="fas fa-trash-alt"></i> Remove</button>
-                  </form>
+        <nav class="main-nav">
+          <div>
+            <label for="search">Search:</label>
+            <input type="text" id="search" name="search">
+          </div>
+          <div>
+              <label for="sort-notes">Sort by:</label>
+              <select name="sort-notes" id="sort-notes">
+                <option value="priority">Priority</option>
+                <option value="created">Date created</option>
+                <option value="finished">Dated finished</option>
+                <option value="due">Due date</option>
+              </select>
+              
+              <input checked type="checkbox" id="openNotes" name="openNotes" value="openNotes">
+              <label for="openNotes">Show open notes</label>
+              <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+              <label for="finishedNotes">Show finished notes</label>
+          </div>
+          <div>
+            <button type="button"><i class="fas fa-plus"></i>Add new note</button>
+          </div>
+        </nav>
+        <main class="main-content">
+          <div class="main-content-card">
+            <div class="main-content-card-header">
+              TITEL
             </div>
-        
-        </div>
+            <div class="main-content-card-body">
+              
+              <div class="content-card">
+                <div class="content-card-header">
+                  Title
+                  <i class="fas fa-exclamation"></i>
+                  <i class="fas fa-exclamation"></i>
+                </div>
+                <div class="content-card-body">
+                  Content
+                </div>
+                <div class="content-card-footer">
+                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+                  <label for="finishedNotes">Finished</label>
+                </div>
+              </div>
 
-        <script src="./scripts/scripts.js"></script>
-    </body>
+              <div class="content-card">
+                <div class="content-card-header">
+                  Title
+                  <i class="fas fa-exclamation"></i>
+                </div>
+                <div class="content-card-body">
+                  Content
+                </div>
+                <div class="content-card-footer">
+                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+                  <label for="finishedNotes">Finished</label>
+                </div>
+              </div>
+
+              <div class="content-card">
+                <div class="content-card-header">
+                  Title
+                  <i class="fas fa-exclamation"></i>
+                  <i class="fas fa-exclamation"></i>
+                  <i class="fas fa-exclamation"></i>
+                </div>
+                <div class="content-card-body">
+                  Content
+                </div>
+                <div class="content-card-footer">
+                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+                  <label for="finishedNotes">Finished</label>
+                </div>
+              </div>
+
+              <div class="content-card">
+                <div class="content-card-header">
+                  Title
+                  <i class="fas fa-exclamation"></i>
+                </div>
+                <div class="content-card-body">
+                  Content
+                </div>
+                <div class="content-card-footer">
+                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+                  <label for="finishedNotes">Finished</label>
+                </div>
+              </div>
+
+              <div class="content-card">
+                <div class="content-card-header">
+                  Title
+                  <i class="fas fa-exclamation"></i>
+                  <i class="fas fa-exclamation"></i>
+                  <i class="fas fa-exclamation"></i>
+                  <i class="fas fa-exclamation"></i>
+                </div>
+                <div class="content-card-body">
+                  Content
+                </div>
+                <div class="content-card-footer">
+                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+                  <label for="finishedNotes">Finished</label>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="main-content-card">
+            <div class="main-content-card-header">
+              TITEL
+            </div>
+            <div class="main-content-card-body">
+
+              <div class="content-card">
+                <div class="content-card-header">
+                  Title
+                  <i class="fas fa-exclamation"></i>
+                </div>
+                <div class="content-card-body">
+                  Content
+                </div>
+                <div class="content-card-footer">
+                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+                  <label for="finishedNotes">Finished</label>
+                </div>
+              </div>
+
+              <div class="content-card">
+                <div class="content-card-header">
+                  Title
+                  <i class="fas fa-exclamation"></i>
+                  <i class="fas fa-exclamation"></i>
+                  <i class="fas fa-exclamation"></i>
+                </div>
+                <div class="content-card-body">
+                  Content
+                </div>
+                <div class="content-card-footer">
+                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+                  <label for="finishedNotes">Finished</label>
+                </div>
+              </div>
+
+              <div class="content-card">
+                <div class="content-card-header">
+                  Title
+                  <i class="fas fa-exclamation"></i>
+                </div>
+                <div class="content-card-body">
+                  Content
+                </div>
+                <div class="content-card-footer">
+                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+                  <label for="finishedNotes">Finished</label>
+                </div>
+              </div>
+
+              <div class="content-card">
+                <div class="content-card-header">
+                  Title
+                  <i class="fas fa-exclamation"></i>
+                  <i class="fas fa-exclamation"></i>
+                  <i class="fas fa-exclamation"></i>
+                  <i class="fas fa-exclamation"></i>
+                </div>
+                <div class="content-card-body">
+                  Content
+                </div>
+                <div class="content-card-footer">
+                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+                  <label for="finishedNotes">Finished</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </main>
+        <div class="main-footer">
+          <p>Copyright &copy; 2020 by Patrick</p>
+        </div>
+      </div>
+      </body>
 </html>
