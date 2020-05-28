@@ -3,6 +3,7 @@ html, body {
     height: 100%;
     margin: 0px;
 }
+
 .container {
     display: grid;
     min-height: 100%;
@@ -32,11 +33,7 @@ html, body {
     margin: 15px;
     border-radius: 10%;
     transform: rotate(-20deg);
-}
-
-.no-url {
-    color: inherit;
-    text-decoration: inherit;
+    border: 2px solid black;
 }
 
 .main-nav {
@@ -71,6 +68,14 @@ html, body {
     font-size: x-large;
 }
 
+.main-content-card-body {
+    background-color: gray;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    gap: 10px;
+    padding: 10px;
+}
+
 .main-footer {
     grid-area: footer;
     background-color: gray;
@@ -78,17 +83,12 @@ html, body {
 }
 
 .content-card {
-    background-color: white;
-    margin: 10px;
+    background-color: #E8E8E8;
     border: 2px solid black;
-    min-width: 200px;
-    max-width: 200px;
-    min-height: 200px;
-    max-height: 200px;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    float: left;
-    
+    height: 250px;
+    width: 250px;    
 }
 
 .content-card-header {
@@ -98,15 +98,20 @@ html, body {
     font-size: large;
 }
 
-.content-card-footer {
-    border-top: 2px solid black;
+.content-card-body {
+    background-color: white;
 }
 
-.main-content-card-body {
-    background-color: gray;
+.content-card-footer {
+    border-top: 2px solid black;
 }
 
 .main-footer {
     font-size: medium;
     font-weight: bold;
+}
+
+.no-url {
+    color: inherit;
+    text-decoration: inherit;
 }
