@@ -1,0 +1,44 @@
+/* import common css */
+@import "common_styles.css";
+
+/* define mode variables */
+:root {
+
+    /* .main-header */
+    --main-header_background-color: #30619F;
+
+    /* .main-footer */
+    --main-footer_background-color: #F6F7F9;
+
+    /* .main-content */
+    --main-content_background-color: white;
+
+    /* .container */
+    --container_grid-template-columns: 300px 1fr;
+    --container_grid-template-rows: auto 1fr auto;
+    --container_grid-template-areas:
+        "header header"
+        "navigation content"
+        "footer footer";
+    
+    /* .main-nav */
+    --main-nav_background-color: #F6F7F9;
+    --main-nav_border-right: 2px solid black;
+    --main-nav_grid-template-columns: 1fr;
+    --main-nav_grid-template-rows: auto auto auto auto auto 1fr;
+    --main-nav_grid-template-areas:
+        "search"
+        "sort"
+        "openNotes"
+        "finishedNotes"
+        "button";
+    
+    /* main-content-card-header */
+    --main-content-card-header_background-color: #30619F;
+
+    /* main-content-card-body */
+    --main-content-card-body_background-color: #F6F7F9;
+
+    /* content-card */
+    --content-card_background-color: #4D7EBA;
+}

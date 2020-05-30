@@ -7,13 +7,9 @@ html, body {
 .container {
     display: grid;
     min-height: 100%;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr auto;
-    grid-template-areas:
-      "header"
-      "navigation"
-      "content"
-      "footer";
+    grid-template-columns: var(--container_grid-template-columns);
+    grid-template-rows: var(--container_grid-template-rows);
+    grid-template-areas: var(--container_grid-template-areas);
 }
 
 .main-header {
@@ -21,7 +17,7 @@ html, body {
     display: grid;
     grid-template-columns: auto 1fr auto;
     border-bottom: 2px solid black;
-    background-color: #383838;
+    background-color: var(--main-header_background-color);
 }
 
 .main-header-style {
@@ -38,22 +34,45 @@ html, body {
 
 .main-nav {
     grid-area: navigation;
-    background-color: gray;
+    background-color: var(--main-nav_background-color);
     display: grid;
-    grid-template-rows: auto auto auto;
-    grid-row-gap: 5px;
+    grid-template-columns: var(--main-nav_grid-template-columns);
+    grid-template-rows: var(--main-nav_grid-template-rows);
+    grid-template-areas: var(--main-nav_grid-template-areas);
+    gap: 5px 5px;
     padding: 5px;
+    border-bottom: 2px solid black;
+    border-right: var(--main-nav_border-right);
+}
+
+.main-nav-search {
+    grid-area: search;
+}
+
+.main-nav-sort {
+    grid-area: sort;
+}
+
+.main-nav-openNotes {
+    grid-area: openNotes;
+}
+
+.main-nav-finishedNotes {
+    grid-area: finishedNotes;
+}
+
+.main-nav-button {
+    grid-area: button;
 }
 
 .main-content {
     grid-area: content;
-    background-color: DarkGray ;
+    background-color: var(--main-content_background-color);
     padding: 10px;
-    border-top: 2px solid black;
     border-bottom: 2px solid black;
 }
 
-.main-content-card{
+.main-content-card {
     display: grid;
     grid-template-rows: auto 1fr;
     margin: 10px;
@@ -62,14 +81,14 @@ html, body {
 
 .main-content-card-header {
     border-bottom: 2px solid black;
-    background-color: #383838;
+    background-color: var(--main-content-card-header_background-color);
     padding: 10px;
     font-weight: bold;
     font-size: x-large;
 }
 
 .main-content-card-body {
-    background-color: gray;
+    background-color: var(--main-content-card-body_background-color);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
     gap: 10px;
@@ -78,12 +97,14 @@ html, body {
 
 .main-footer {
     grid-area: footer;
-    background-color: gray;
+    background-color: var(--main-footer_background-color);
     text-align: center;
+    font-size: medium;
+    font-weight: bold;
 }
 
 .content-card {
-    background-color: #E8E8E8;
+    background-color: var(--content-card_background-color);
     border: 2px solid black;
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -104,11 +125,6 @@ html, body {
 
 .content-card-footer {
     border-top: 2px solid black;
-}
-
-.main-footer {
-    font-size: medium;
-    font-weight: bold;
 }
 
 .no-url {
