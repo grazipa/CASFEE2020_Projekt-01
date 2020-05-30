@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- start meta -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" type="image/x-icon" href="./images/notes.png">
+        <!-- end meta -->
+
+        <!-- start styling imports -->
         <script src="https://kit.fontawesome.com/ba5d6b8461.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="./css/blue_styles.css" />
+        <link id="stylesheet" rel="stylesheet" href="./css/grey_styles.css" />
+        <!-- end styling imports -->
+
+        <!-- start site settings -->
+        <link rel="shortcut icon" type="image/x-icon" href="./images/notes.png">
         <title>Notes-App</title>
+        <!-- end site settings -->
+
     </head>
     <body>
       <!-- start container -->
@@ -19,9 +28,9 @@
 
           <!-- start main-header-style -->
           <div class="main-header-style">
-            <select>
-              <option value="dark">Grey-Mode</option>
-              <option value="bright">Blue-Mode</option>
+            <select id="websiteStyle">
+              <option value="grey">Grey-Mode</option>
+              <option value="blue">Blue-Mode</option>
             </select>
           </div>
           <!-- end main-header-style -->
@@ -67,174 +76,127 @@
 
           <!-- start main-nav-button -->
           <div class="main-nav-button">
-            <button type="button"><i class="fas fa-plus"></i>Add new note</button>
+            <button id="newNote"><i class="fas fa-plus"></i>Add new note</button>
           </div>
           <!-- end main-nav-button -->
 
         </nav>
         <!-- end main-nav -->
 
+        <!-- start main-content -->
         <main class="main-content">
-          <div class="main-content-card">
-            <div class="main-content-card-header">
+
+          <!-- start main-content-card -->
+          <section class="main-content-card">
+
+            <!-- start main-content-card-header -->
+            <header class="main-content-card-header">
               TITLE
-            </div>
+            </header>
+            <!-- end main-content-card-header -->
+
+            <!-- start main-content-card-body -->
             <div class="main-content-card-body">
               
-              <div class="content-card">
-                <div class="content-card-header">
-                  Title
-                  <i class="fas fa-exclamation"></i>
-                  <i class="fas fa-exclamation"></i>
-                </div>
-                <div class="content-card-body">
-                  Content
-                </div>
-                <div class="content-card-footer">
-                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
-                  <label for="finishedNotes">Finished</label>
-                </div>
-              </div>
+              <!-- start content-card -->
+              <article class="content-card">
 
-              <div class="content-card">
-                <div class="content-card-header">
+                <!-- start content-card-header -->
+                <header class="content-card-header">
                   Title
                   <i class="fas fa-exclamation"></i>
-                </div>
-                <div class="content-card-body">
-                  Content
-                </div>
-                <div class="content-card-footer">
-                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
-                  <label for="finishedNotes">Finished</label>
-                </div>
-              </div>
+                  <i class="fas fa-exclamation"></i>
+                </header>
+                <!-- end content-card-header -->
 
-              <div class="content-card">
-                <div class="content-card-header">
-                  Title
-                  <i class="fas fa-exclamation"></i>
-                  <i class="fas fa-exclamation"></i>
-                  <i class="fas fa-exclamation"></i>
-                </div>
+                <!-- start content-card-body -->
                 <div class="content-card-body">
                   Content
                 </div>
-                <div class="content-card-footer">
-                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
-                  <label for="finishedNotes">Finished</label>
-                </div>
-              </div>
+                <!-- end content-card-body -->
 
-              <div class="content-card">
-                <div class="content-card-header">
-                  Title
-                  <i class="fas fa-exclamation"></i>
-                </div>
-                <div class="content-card-body">
-                  Content
-                </div>
-                <div class="content-card-footer">
+                <!-- start content-card-footer -->
+                <footer class="content-card-footer">
                   <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
                   <label for="finishedNotes">Finished</label>
-                </div>
-              </div>
+                </footer>
+                <!-- end content-card-footer -->
 
-              <div class="content-card">
-                <div class="content-card-header">
-                  Title
-                  <i class="fas fa-exclamation"></i>
-                  <i class="fas fa-exclamation"></i>
-                  <i class="fas fa-exclamation"></i>
-                  <i class="fas fa-exclamation"></i>
-                </div>
-                <div class="content-card-body">
-                  Content
-                </div>
-                <div class="content-card-footer">
-                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
-                  <label for="finishedNotes">Finished</label>
-                </div>
-              </div>
+              </article>
+              <!-- end content-card -->
               
             </div>
-          </div>
+            <!-- end main-content-card-body -->
 
-          <div class="main-content-card">
-            <div class="main-content-card-header">
-              TITLE
-            </div>
-            <div class="main-content-card-body">
+          </section>
+          <!-- end main-content-card -->
 
-              <div class="content-card">
-                <div class="content-card-header">
-                  Title
-                  <i class="fas fa-exclamation"></i>
-                </div>
-                <div class="content-card-body">
-                  Content
-                </div>
-                <div class="content-card-footer">
-                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
-                  <label for="finishedNotes">Finished</label>
-                </div>
-              </div>
-
-              <div class="content-card">
-                <div class="content-card-header">
-                  Title
-                  <i class="fas fa-exclamation"></i>
-                  <i class="fas fa-exclamation"></i>
-                  <i class="fas fa-exclamation"></i>
-                </div>
-                <div class="content-card-body">
-                  Content
-                </div>
-                <div class="content-card-footer">
-                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
-                  <label for="finishedNotes">Finished</label>
-                </div>
-              </div>
-
-              <div class="content-card">
-                <div class="content-card-header">
-                  Title
-                  <i class="fas fa-exclamation"></i>
-                </div>
-                <div class="content-card-body">
-                  Content
-                </div>
-                <div class="content-card-footer">
-                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
-                  <label for="finishedNotes">Finished</label>
-                </div>
-              </div>
-
-              <div class="content-card">
-                <div class="content-card-header">
-                  Title
-                  <i class="fas fa-exclamation"></i>
-                  <i class="fas fa-exclamation"></i>
-                  <i class="fas fa-exclamation"></i>
-                  <i class="fas fa-exclamation"></i>
-                </div>
-                <div class="content-card-body">
-                  Content
-                </div>
-                <div class="content-card-footer">
-                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
-                  <label for="finishedNotes">Finished</label>
-                </div>
-              </div>
-
-            </div>
-          </div>
         </main>
-        <div class="main-footer">
+        <!-- end main-content -->
+
+        <!-- start main-footer -->
+        <footer class="main-footer">
           <p>Copyright &copy; 2020 by Patrick</p>
-        </div>
+        </footer>
+        <!-- end main-footer -->
+
       </div>
       <!-- end container -->
+
+      <!-- start modal -->
+      <div id="newNoteModal" class="modal-box">
+
+        <!-- start modal-content -->
+        <div class="modal-content">
+
+          <!-- start modal-content-header -->
+          <header class="modal-content-header">
+            <h1>Add new note</h1>
+          </header>
+          <!-- end modal-content-header -->
+
+          <form class="modal-content-form">
+            <div class="modal-content-form-title">
+              <label for="title">Title:</label>
+              <input type="text" id="title" name="title">
+            </div>
+
+            <div class="modal-content-form-priority">
+              <label for="priority">Priority:</label>
+              <select id="priority" name="priority">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+
+            <div class="modal-content-form-duedate">
+              <label for="duedate">Due date:</label>
+              <input type="date" id="duedate" name="duedate">
+            </div>
+
+            <div class="modal-content-form-note">
+              <textarea name="note"></textarea>
+            </div>
+
+            <div class="modal-content-form-button">
+              <button type="button"><i class="fas fa-trash-alt"></i> Remove</button>
+              <button id="cancel" type="button"><i class="far fa-window-close"></i> Cancel</button>
+              <button type="button"><i class="fas fa-save"></i> Save</button>
+            </div>
+          </form>
+
+        </div>
+        <!-- end modal-content -->
+
+      </div>
+      <!-- end modal -->
+
+      <!-- start js import -->
+      <script src="./scripts/scripts.js"></script>
+      <!-- end js import -->
 
       </body>
 </html>
