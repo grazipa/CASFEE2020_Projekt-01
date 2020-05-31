@@ -8,6 +8,7 @@
 
         <!-- start styling imports -->
         <script src="https://kit.fontawesome.com/ba5d6b8461.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
         <link id="stylesheet" rel="stylesheet" href="./css/grey_styles.css" />
         <!-- end styling imports -->
 
@@ -84,52 +85,69 @@
         <!-- end main-nav -->
 
         <!-- start main-content -->
-        <main class="main-content">
+        <main class="main-content" id="TEST">
 
-          <!-- start main-content-card -->
-          <section class="main-content-card">
 
-            <!-- start main-content-card-header -->
-            <header class="main-content-card-header">
-              TITLE
-            </header>
-            <!-- end main-content-card-header -->
+          <script id="entry-template" type="text/x-handlebars-template">
+            {{#each this}}
 
-            <!-- start main-content-card-body -->
-            <div class="main-content-card-body">
-              
-              <!-- start content-card -->
-              <article class="content-card">
+              <!-- start main-content-card -->
+              <section class="main-content-card">
 
-                <!-- start content-card-header -->
-                <header class="content-card-header">
-                  Title
-                  <i class="fas fa-exclamation"></i>
-                  <i class="fas fa-exclamation"></i>
+                <!-- start main-content-card-header -->
+                <header class="main-content-card-header">
+                  {{@key}}
                 </header>
-                <!-- end content-card-header -->
+                <!-- end main-content-card-header -->
 
-                <!-- start content-card-body -->
-                <div class="content-card-body">
-                  Content
+                <!-- start main-content-card-body -->
+                <div class="main-content-card-body">
+                  
+                  {{#each this}}
+                  <!-- start content-card -->
+                  <article class="content-card">
+
+                    <!-- start content-card-header -->
+                    <header class="content-card-header">
+                      {{title}}
+                      {{#times priority}}
+                        <i class="fas fa-exclamation"></i>
+                      {{/times}}
+                    </header>
+                    <!-- end content-card-header -->
+
+                    <!-- start content-card-body -->
+                    <div class="content-card-body">
+                      {{note}}
+                    </div>
+                    <!-- end content-card-body -->
+
+                    <!-- start content-card-footer -->
+                    <footer class="content-card-footer">
+                      {{#if finished}}
+                      <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes" checked>
+                      {{else}}
+                      <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+                      {{/if}}
+                      <label for="finishedNotes">Finished</label>
+                    </footer>
+                    <!-- end content-card-footer -->
+
+                  </article>
+                  <!-- end content-card -->
+                  {{/each}}
+                  
                 </div>
-                <!-- end content-card-body -->
+                <!-- end main-content-card-body -->
 
-                <!-- start content-card-footer -->
-                <footer class="content-card-footer">
-                  <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
-                  <label for="finishedNotes">Finished</label>
-                </footer>
-                <!-- end content-card-footer -->
+              </section>
+              <!-- end main-content-card -->
 
-              </article>
-              <!-- end content-card -->
-              
-            </div>
-            <!-- end main-content-card-body -->
 
-          </section>
-          <!-- end main-content-card -->
+              {{/each}}
+
+
+          </script>
 
         </main>
         <!-- end main-content -->
