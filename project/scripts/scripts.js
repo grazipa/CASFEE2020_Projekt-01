@@ -194,7 +194,10 @@ document.getElementById("TEST").innerHTML = html;
 
 
 // Open note
-document.getElementById('TEST').onclick = function() {
-  alert(window.event.id);
-  
+document.onclick = function() {
+  if (event.target.dataset.id) {
+    document.getElementById('newNoteModal').style.display = 'grid';
+    
+    
+  }
 }
