@@ -48,17 +48,26 @@ document.getElementById('cancel').onclick = function() {
   document.getElementById('newNoteModal').style.display = 'none';
 }
 
+// uuid
+function uuidv4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
 
 
 // Class
 class Note {
-  constructor(title, priority, duedate, note, finished, datefinished) {
+  constructor(title, priority, duedate, note, finished, datefinished, datecreated) {
+    this.id = uuidv4();
     this.title = title; //string
     this.priority = priority; //int
     this.duedate = duedate; //date
     this.note = note; //string
     this.finished = finished; //boolean
-    this.datefinished = datefinished; //open / finished
+    this.datefinished = datefinished; //date
+    this.datecreated = datecreated; //date
   }
 }
 
@@ -68,15 +77,76 @@ class Notes {
   }
 
   //Get notes
-  getNotes(sortedBy = 'priority') {
+  getNotes(sortedBy = 'priority', type = [true, false], search = '') {
     const notes = {};
     switch (sortedBy) {
       case 'priority':
         for (let note of this.notes) {
-          if (note.priority in notes) {
-            notes[note.priority].push(note);
+          if (!type.includes(note.finished)) {
+            continue;
+          }
+
+          if ((search !== '') && (!note.title.includes(search)) && (!note.title.includes(search))) {
+            continue;
+          }
+
+          if ('Priority: ' + note.priority in notes) {
+            notes['Priority: ' + note.priority].push(note);
           } else {
-            notes[note.priority] = [note];
+            notes['Priority: ' + note.priority] = [note];
+          }
+        }
+        break;
+      
+      case 'datecreated':
+        for (let note of this.notes) {
+          if (!type.includes(note.finished)) {
+            continue;
+          }
+
+          let dateObject = new Date(note.datecreated)
+          if ('Date created: ' + dateObject.toLocaleDateString() in notes) {
+            notes['Date created: ' + dateObject.toLocaleDateString()].push(note);
+          } else {
+            notes['Date created: ' + dateObject.toLocaleDateString()] = [note];
+          }
+        }
+        break;
+
+      case 'duedate':
+        for (let note of this.notes) {
+          if (!type.includes(note.finished)) {
+            continue;
+          }
+
+          let dateObject = new Date(note.duedate)
+          if ('Due date: ' + dateObject.toLocaleDateString() in notes) {
+            notes['Due date: ' + dateObject.toLocaleDateString()].push(note);
+          } else {
+            notes['Due date: ' + dateObject.toLocaleDateString()] = [note];
+          }
+        }
+        break;
+        
+      case 'datefinished':
+        for (let note of this.notes) {
+          if (!type.includes(note.finished)) {
+            continue;
+          }
+
+          if (note.finished) {
+            let dateObject = new Date(note.datefinished)
+            if ('Date finished: ' + dateObject.toLocaleDateString() in notes) {
+              notes['Date finished: ' + dateObject.toLocaleDateString()].push(note);
+            } else {
+              notes['Date finished: ' + dateObject.toLocaleDateString()] = [note];
+            }
+          } else {
+            if ('Date finished: -' in notes) {
+              notes['Date finished: -'].push(note);
+            } else {
+              notes['Date finished: -'] = [note];
+            }
           }
         }
         break;
@@ -99,12 +169,13 @@ const notes = new Notes();
 for (let i = 0; i < notesCount; i ++) {
   const title = randomText.substring(0, Math.floor(Math.random() * 30) + 10);
   const priority = Math.floor(Math.random() * 5) + 1;
-  const duedate = current_time + (Math.floor(Math.random() * 4000) + 1500);
+  const datecreated = current_time + (Math.floor(Math.random() * 5) * 86400000);
+  const duedate = datecreated + (Math.floor(Math.random() * 5) * 86400000);
   const note = randomText.substring(0, Math.floor(Math.random() * 250));
   const finished = Math.floor(Math.random() * 2) + 1 === 1 ? true : false;
-  const datefinished = finished === true ? duedate + (Math.floor(Math.random() * 4000) + 1500) : null;
+  const datefinished = finished === true ? duedate + (Math.floor(Math.random() * 5) * 86400000) : null;
 
-  const note2 = new Note(title, priority, duedate, note, finished, datefinished);
+  const note2 = new Note(title, priority, duedate, note, finished, datefinished, datecreated);
   notes.notes.push(note2);
 }
 
@@ -118,6 +189,12 @@ Handlebars.registerHelper('times', function(n, block) {
 
 let source = document.getElementById("entry-template").innerHTML;
 let template = Handlebars.compile(source);
-let html = template(notes.getNotes());
-console.log(html);
+let html = template(notes.getNotes('priority', [true, false], ''));
 document.getElementById("TEST").innerHTML = html;
+
+
+// Open note
+document.getElementById('TEST').onclick = function() {
+  alert(window.event.id);
+  
+}
