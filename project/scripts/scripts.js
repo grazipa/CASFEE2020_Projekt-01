@@ -91,9 +91,13 @@ class Notes {
           }
 
           if ('Priority: ' + note.priority in notes) {
-            notes['Priority: ' + note.priority].push(note);
+            notes['Priority: ' + note.priority]['notes'].push(note);
           } else {
-            notes['Priority: ' + note.priority] = [note];
+            notes['Priority: ' + note.priority] = {};
+            notes['Priority: ' + note.priority]['text'] = 'Priority: ' + note.priority;
+            notes['Priority: ' + note.priority]['value'] = note.priority;
+            notes['Priority: ' + note.priority]['notes'] = [note];
+            //notes['Priority: ' + note.priority] = [note];
           }
         }
         break;
@@ -155,7 +159,17 @@ class Notes {
         throw (`sort mode '${sortedBy}' is not implemented!`);
     }
 
-    return notes;
+    //Convert list to array
+    //[['Title',[note1, note2]],['Title',[note2,note2]]]
+    const r = [];
+    for (let key in notes) {
+      r.push(notes[key])
+    }
+    r.sort(function(a, b) {
+      return a['value'] - b['value'];
+    });
+    console.log(r);
+    return r;
   }
 
 
