@@ -153,7 +153,6 @@ class Notes {
 
       default:
         throw (`sort mode '${sortedBy}' is not implemented!`);
-        break;
     }
 
     return notes;
