@@ -9,21 +9,23 @@ export class Controller {
         this.notesListContainer = document.getElementById('notes-list-container');
         this.styleDropdown = document.getElementById('style-dropdown');
         this.stylesheet = document.getElementById('stylesheet');
-        
-        this.cookie = document.cookie;
     }
 
     getPreferredStyle() {
         let preferredStyle = '';
-        if (this.cookie) {
-            preferredStyle = this.cookie.split('; ').find(row => row.startsWith('style')).split('=')[1];
+        if (document.cookie) {
+            preferredStyle = document.cookie.split('; ').find(row => row.startsWith('style')).split('=')[1];
         }
 
-        return (preferredStyle !== '' ? preferredStyle : 'Blue-Mode');
+        preferredStyle = preferredStyle !== '' ? preferredStyle : 'Blue-Mode';
+        this.setPreferredStyle(preferredStyle);
+        return preferredStyle;
     }
 
     setPreferredStyle(style) {
-        this.cookie = `style=${style}`;
+        const date = new Date();
+        date.setTime(date.getTime() + (30 * 86400 * 1000));
+        document.cookie = `style=${style}; expires=${date.toUTCString()}`;
     }
 
     setStylesheet(style) {
