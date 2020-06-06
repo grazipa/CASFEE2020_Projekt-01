@@ -30,7 +30,7 @@ export class Controller {
 
     setStylesheet(style) {
         let href = '';
-        let selectedIndex = 0;
+        let selectedIndex = null;
 
         switch (style) {
             case 'Grey-Mode':
@@ -44,7 +44,11 @@ export class Controller {
                 break;
             
             default:
-                throw `Style '${style}' is not defined!`;
+                console.error(`Style '${style}' is not defined!`);
+                href = './css/grey_styles.css'
+                selectedIndex = 0;
+                style = 'Grey-Mode';
+                break;
         }
 
         this.stylesheet.href = href;
