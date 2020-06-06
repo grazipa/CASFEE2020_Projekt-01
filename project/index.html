@@ -68,20 +68,17 @@
             </select>
           </div>
           <!-- end main-nav-sort -->
-            
-          <!-- start main-nav-openNotes -->
-          <div class="main-nav-openNotes">
-            <input checked type="checkbox" id="openNotes" name="openNotes" value="openNotes">
-            <label for="openNotes">Show open notes</label>
-          </div>
-          <!-- end main-nav-openNotes -->
 
-          <!-- start main-nav-finishedNotes -->
-          <div class="main-nav-finishedNotes">
-            <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
-            <label for="finishedNotes">Show finished notes</label>
+          <!-- start main-nav-show -->
+          <div class="main-nav-show">
+            <label for="show-notes">Show:</label>
+            <select name="show-notes" id="show-notes">
+              <option value="open">Open notes</option>
+              <option value="finished">Finished notes</option>
+              <option value="all">All notes</option>
+            </select>
           </div>
-          <!-- end main-nav-finishedNotes -->
+          <!-- end main-nav-show -->
 
           <!-- start main-nav-button -->
           <div class="main-nav-button">

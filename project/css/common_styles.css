@@ -53,12 +53,8 @@ html, body {
     grid-area: sort;
 }
 
-.main-nav-openNotes {
-    grid-area: openNotes;
-}
-
-.main-nav-finishedNotes {
-    grid-area: finishedNotes;
+.main-nav-show {
+    grid-area: show;
 }
 
 .main-nav-button {

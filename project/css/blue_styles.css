@@ -25,12 +25,11 @@
     --main-nav_background-color: #F6F7F9;
     --main-nav_border-right: 2px solid black;
     --main-nav_grid-template-columns: 1fr;
-    --main-nav_grid-template-rows: auto auto auto auto auto 1fr;
+    --main-nav_grid-template-rows: auto auto auto auto 1fr;
     --main-nav_grid-template-areas:
         "search"
         "sort"
-        "openNotes"
-        "finishedNotes"
+        "show"
         "button";
     
     /* main-content-card-header */

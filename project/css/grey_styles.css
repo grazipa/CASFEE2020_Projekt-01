@@ -24,12 +24,13 @@
     /* .main-nav */
     --main-nav_background-color: gray;
     --main-nav_border-right: none;
-    --main-nav_grid-template-columns: auto auto auto 1fr;
-    --main-nav_grid-template-rows: auto auto auto;
+    --main-nav_grid-template-columns: auto 1fr;
+    --main-nav_grid-template-rows: auto auto auto auto;
     --main-nav_grid-template-areas:
-        "search search search search"
-        "sort finishedNotes openNotes ."
-        "button button button button";
+        "search ."
+        "sort ."
+        "show ."
+        "button .";
     
     /* main-content-card-header */
     --main-content-card-header_background-color: #383838;
