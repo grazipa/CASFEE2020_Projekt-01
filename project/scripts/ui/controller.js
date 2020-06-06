@@ -17,8 +17,7 @@ export class Controller {
             preferredStyle = document.cookie.split('; ').find(row => row.startsWith('style')).split('=')[1];
         }
 
-        preferredStyle = preferredStyle !== '' ? preferredStyle : 'Blue-Mode';
-        this.setPreferredStyle(preferredStyle);
+        preferredStyle = preferredStyle !== '' ? preferredStyle : 'Grey-Mode';
         return preferredStyle;
     }
 
