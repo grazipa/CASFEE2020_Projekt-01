@@ -7,6 +7,11 @@ export class Service {
         this.loadData();
     }
 
+    removeNoteById(id) {
+        this.notes = this.notes.filter(n => n.id != id);
+        this.save();
+    }
+
     getNoteById(id) {
         return this.notes.find(n => n.id == id);
     }

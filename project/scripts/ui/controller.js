@@ -76,6 +76,7 @@ export class Controller {
             settings['note'] = note.note;
             settings['dueDate'] = convertDateToIso(note.dueDate);
             settings['finished'] = note.finished;
+            settings['id'] = note.id;
         } else {
             settings['mode'] = 'Add';
         }
@@ -113,6 +114,12 @@ export class Controller {
         this.modalNote.addEventListener('click', (event) => {
             switch (event.target.id) {
                 case 'modal-cancel':
+                    this.hideModal();
+                    break;
+                
+                case 'modal-remove':
+                    this.service.removeNoteById(event.target.dataset.noteId);
+                    this.showNotesList();
                     this.hideModal();
                     break;
             }
