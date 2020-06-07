@@ -15,7 +15,9 @@ export class Controller {
         this.sortNote = document.getElementById('sort-note');
         this.filterNote = document.getElementById('filter-note');
         this.addNote = document.getElementById('add-note');
-        this.modalNote = document.getElementById('modal-note');
+        
+        // Modal
+        this.modalNote = document.getElementById('modal-note');        
     }
 
     getPreferredStyle() {
@@ -122,8 +124,43 @@ export class Controller {
                     this.showNotesList();
                     this.hideModal();
                     break;
-            }
+
+                case 'modal-save':
+                    this.modalNoteTitle = document.getElementById('modal-note-title');
+                    this.modalNotePriority = document.getElementById('modal-note-priority');
+                    this.modalNoteNote = document.getElementById('modal-note-note');
+                    this.modalNoteFinished = document.getElementById('modal-note-finished');
+                    this.modalNoteDueDate = document.getElementById('modal-note-duedate');
+                    
+                    if (event.target.dataset.noteId) {
+                        this.service.editNote(event.target.dataset.noteId, this.modalNoteTitle.value, this.modalNotePriority.options[this.modalNotePriority.selectedIndex].value, Date.parse(this.modalNoteDueDate.value), this.modalNoteNote.value, this.modalNoteFinished.checked, this.modalNoteFinished.checked ? getUnixTimestamp() : null);
+                    } else {
+                        this.service.newNote(this.modalNoteTitle.value, this.modalNotePriority.options[this.modalNotePriority.selectedIndex].value, Date.parse(this.modalNoteDueDate.value), this.modalNoteNote.value, this.modalNoteFinished.checked, this.modalNoteFinished.checked ? getUnixTimestamp() : null);
+                    }
+                    this.showNotesList();
+                    this.hideModal();
+                    break;
+            }            
         });
+
+        //this.modalNote.addEventListener('submit', (event) => {
+        //    this.modalNoteTitle = document.getElementById('modal-note-title');
+        //    this.modalNotePriority = document.getElementById('modal-note-priority');
+        //    this.modalNoteNote = document.getElementById('modal-note-note');
+        //    this.modalNoteFinished = document.getElementById('modal-note-finished');
+        //    this.modalNoteDueDate = document.getElementById('modal-note-duedate');
+        //    
+        //    console.log(event);
+        //    if (event.target.dataset.noteId) {
+        //        this.service.editNote(event.target.dataset.noteId, this.modalNoteTitle.value, this.modalNotePriority.options[this.modalNotePriority.selectedIndex].value, Date.parse(this.modalNoteDueDate.value), this.modalNoteNote.value, this.modalNoteFinished.checked, this.modalNoteFinished.checked ? getUnixTimestamp() : null);
+        //    } else {
+        //        this.service.newNote(this.modalNoteTitle.value, this.modalNotePriority.options[this.modalNotePriority.selectedIndex].value, Date.parse(this.modalNoteDueDate.value), this.modalNoteNote.value, this.modalNoteFinished.checked, this.modalNoteFinished.checked ? getUnixTimestamp() : null);
+        //    }
+//
+        //    event.preventDefault();
+        //    this.showNotesList();
+        //    this.hideModal();
+        //});
 
         this.notesListContainer.addEventListener('dblclick', (event) => {
             if (event.target.dataset.noteId) {

@@ -2,7 +2,7 @@
 
 // Get unix timestamp
 function getUnixTimestamp() {
-    return Math.floor(Date.now() / 1000);
+    return Math.floor(Date.now());
 }
 
 // Generate a UUID in version 4

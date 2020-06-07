@@ -7,6 +7,27 @@ export class Service {
         this.loadData();
     }
 
+    editNote(id, title, priority, dueDate, note, finished, dateFinished) {
+        const n = this.notes.find(n => n.id == id);
+        if (n) {
+            n.title = title;
+            n.priority = priority;
+            n.dueDate = dueDate;
+            n.note = note;
+            n.finished = finished;
+            n.title = title;
+            n.dateFinished = dateFinished;
+        }
+
+        this.save();
+    }
+
+    newNote(title, priority, dueDate, note, finished, dateFinished) {
+        const n = new Note(getUUID(), title, priority, dueDate, note, finished, dateFinished, getUnixTimestamp())
+        this.notes.push(n);
+        this.save();
+    }
+
     removeNoteById(id) {
         this.notes = this.notes.filter(n => n.id != id);
         this.save();
