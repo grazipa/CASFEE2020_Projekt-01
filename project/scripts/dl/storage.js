@@ -28,7 +28,7 @@ export class Storage {
             const finished = Math.floor(Math.random() * 2) + 1 === 1 ? true : false;
             const datefinished = finished === true ? duedate + (Math.floor(Math.random() * 5) * 86400000) : null;
 
-            const note2 = {'id': id, 'title': title, 'priority': priority, 'datecreated': datecreated, 'duedate': duedate, 'note': note, 'finished': finished, 'datefinished': datefinished};
+            const note2 = {'id': id, 'title': title, 'priority': priority, 'dateCreated': datecreated, 'dueDate': duedate, 'note': note, 'finished': finished, 'dateFinished': datefinished};
             notes.push(note2);
         }
 

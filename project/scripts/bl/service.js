@@ -33,7 +33,7 @@ export class Service {
     getNotes(searchText, sortBy, filterBy) {    
         let notes = this.getNotesFilteredBy(filterBy);
         if (searchText !== '') {
-            notes = notes.filter(n => (note.title.includes(searchText)) || (note.note.includes(searchText)));
+            notes = notes.filter(n => (n.title.includes(searchText)) || (n.note.includes(searchText)));
         }
 
         sortBy = ['priority', 'created', 'finished', 'due'].includes(sortBy) ? sortBy: 'priority';
@@ -57,7 +57,9 @@ export class Service {
 
             case 'created':
                 for (let note of notes) {
-                    let dateObject = new Date(note.datecreated)
+                    console.log(note);
+                    let dateObject = new Date(note.dateCreated)
+                    console.log(dateObject);
                     let title = 'Date created: ' + dateObject.toLocaleDateString();
 
                     if (title in notesDict) {
@@ -65,7 +67,7 @@ export class Service {
                     } else {
                         notesDict[title] = {};
                         notesDict[title]['title'] = title;
-                        notesDict[title]['value'] = note.datecreated;
+                        notesDict[title]['value'] = note.dateCreated;
                         notesDict[title]['notes'] = [note];
                     }
                 }
@@ -76,7 +78,7 @@ export class Service {
                     let title = '';
 
                     if (note.finished) {
-                        let dateObject = new Date(note.datefinished)
+                        let dateObject = new Date(note.dateFinished)
                         title = 'Date finished: ' + dateObject.toLocaleDateString();
                     } else {
                         title = 'Date finished: -';
@@ -87,7 +89,7 @@ export class Service {
                     } else {
                         notesDict[title] = {};
                         notesDict[title]['title'] = title;
-                        notesDict[title]['value'] = note.datefinished;
+                        notesDict[title]['value'] = note.dateFinished;
                         notesDict[title]['notes'] = [note];
                     }
                 }
@@ -95,7 +97,7 @@ export class Service {
             
             case 'due':
                 for (let note of notes) {
-                    let dateObject = new Date(note.duedate)
+                    let dateObject = new Date(note.dueDate)
                     let title = 'Due date: ' + dateObject.toLocaleDateString()
 
                     if (title in notesDict) {
@@ -103,7 +105,7 @@ export class Service {
                     } else {
                         notesDict[title] = {};
                         notesDict[title]['title'] = title;
-                        notesDict[title]['value'] = note.duedate;
+                        notesDict[title]['value'] = note.dueDate;
                         notesDict[title]['notes'] = [note];
                     }
                 }
