@@ -9,4 +9,17 @@ export class Note {
       this.dateFinished = dateFinished;
       this.dateCreated = dateCreated;
     }
+
+    toJSON() {
+      return {
+        id: this.id,
+        title: this.title,
+        priority: this.priority,
+        dueDate: this.dueDate,
+        note: this.note,
+        finished: this.finished,
+        dateFinished: this.dateFinished,
+        dateCreated: this.dateCreated
+    };
+    }
   }

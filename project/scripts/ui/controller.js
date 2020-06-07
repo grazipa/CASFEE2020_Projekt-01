@@ -115,6 +115,15 @@ export class Controller {
                 //Render current note in modal
                 this.showModal();
             }
+
+            console.log(event.target.id);
+        });
+
+        this.notesListContainer.addEventListener('change', (event) => {
+            if (event.target.dataset.noteId) {
+                this.service.setNoteFinished(event.target.dataset.noteId, event.target.checked);
+                this.showNotesList();
+            }
         });
     }
 

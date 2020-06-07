@@ -20,7 +20,7 @@ export const noteModalTemplate = `
     <label for="priority">Priority:</label>
     <select id="priority" name="priority">
         <option value="1">1</option>
-        <option value="2" selected>2</option>
+        <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
@@ -29,7 +29,7 @@ export const noteModalTemplate = `
 
     <div class="modal-content-form-duedate">
     <label for="duedate">Due date:</label>
-    <input type="date" id="duedate" name="duedate" value="2020-01-30">
+    <input type="date" id="duedate" name="duedate" value="2020-03-30">
     </div>
 
     <div class="modal-content-form-note">

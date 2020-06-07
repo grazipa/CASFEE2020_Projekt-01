@@ -11,6 +11,26 @@ export class Service {
         this.notes = this.storage.getAll().map(n => new Note(n.id, n.title, n.priority, n.dueDate, n.note, n.finished, n.dateFinished, n.dateCreated));
     }
 
+    setNoteFinished(id, finished) {
+        finished = [true, false].includes(finished) ? finished: false;
+
+        const note = this.notes.find(n => n.id == id);
+        if (note) {
+            switch (finished) {
+                case true:
+                    note.finished = finished;
+                    note.dateFinished = Date.now();
+                    break;
+                
+                case false:
+                    note.finished = finished;
+                    note.dateFinished = null;
+                    break;
+            }
+        }
+        this.save();
+    }
+
     save() {
         this.storage.update(this.notes.map(n => n.toJSON()));
     }
