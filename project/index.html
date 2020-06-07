@@ -82,7 +82,7 @@
 
           <!-- start main-nav-button -->
           <div class="main-nav-button">
-            <button id="newNote"><i class="fas fa-plus"></i>Add new note</button>
+            <button id="add-note"><i class="fas fa-plus"></i>Add new note</button>
           </div>
           <!-- end main-nav-button -->
 
@@ -104,7 +104,7 @@
       <!-- end container -->
 
       <!-- start modal -->
-      <div id="newNoteModal" class="modal-box">
+      <div id="modal-new-note" class="modal-box">
 
           <!-- start modal-content -->
           <div class="modal-content">
@@ -142,8 +142,8 @@
               </div>
 
               <div class="modal-content-form-finishedcheckbox">
-                <label for="finishedNotes">Finished</label>
-                <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+                <label for="modal-finishedNotes">Finished</label>
+                <input type="checkbox" id="modal-finishedNotes" name="modal-finishedNotes" value="-modalfinishedNotes">
               </div>
 
               <div class="modal-content-form-finisheddate">
@@ -151,9 +151,9 @@
               </div>
 
               <div class="modal-content-form-button">
-                <button type="button"><i class="fas fa-trash-alt"></i> Remove</button>
-                <button id="cancel" type="button"><i class="far fa-window-close"></i> Cancel</button>
-                <button type="button"><i class="fas fa-save"></i> Save</button>
+                <button id="modal-remove" type="button"><i class="fas fa-trash-alt"></i> Remove</button>
+                <button id="modal-cancel" type="button"><i class="far fa-window-close"></i> Cancel</button>
+                <button id="modal-save" type="button"><i class="fas fa-save"></i> Save</button>
               </div>
             </form>
 

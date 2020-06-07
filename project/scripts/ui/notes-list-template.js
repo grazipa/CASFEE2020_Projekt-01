@@ -16,10 +16,10 @@ export const notesListTemplate = `
         
         {{#each notes}}
         <!-- start content-card -->
-        <article class="content-card">
+        <article data-noteId="{{id}}" class="content-card">
 
         <!-- start content-card-header -->
-        <header data-id="{{id}}" class="content-card-header">
+        <header data-noteId="{{id}}" class="content-card-header">
             {{title}}
             {{#times priority}}
             <i class="fas fa-exclamation"></i>
@@ -28,19 +28,19 @@ export const notesListTemplate = `
         <!-- end content-card-header -->
 
         <!-- start content-card-body -->
-        <div class="content-card-body">
+        <div data-noteId="{{id}}" class="content-card-body">
             {{note}}
         </div>
         <!-- end content-card-body -->
 
         <!-- start content-card-footer -->
-        <footer class="content-card-footer">
+        <footer data-noteId="{{id}}" class="content-card-footer">
             {{#if finished}}
-            <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes" checked>
+            <input type="checkbox" id="finishedNotes-{{id}}" name="finishedNotes-{{id}}" value="finishedNotes" checked>
             {{else}}
-            <input type="checkbox" id="finishedNotes" name="finishedNotes" value="finishedNotes">
+            <input type="checkbox" id="finishedNotes-{{id}}" name="finishedNotes-{{id}}" value="finishedNotes">
             {{/if}}
-            <label for="finishedNotes">Finished</label>
+            <label for="finishedNotes-{{id}}">Finished</label>
         </footer>
         <!-- end content-card-footer -->
 

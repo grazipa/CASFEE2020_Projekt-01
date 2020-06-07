@@ -12,6 +12,8 @@ export class Controller {
         this.searchNote = document.getElementById('search-note');
         this.sortNote = document.getElementById('sort-note');
         this.filterNote = document.getElementById('filter-note');
+        this.addNote = document.getElementById('add-note');
+        this.modalNewNote = document.getElementById('modal-new-note');
     }
 
     getPreferredStyle() {
@@ -63,6 +65,14 @@ export class Controller {
         this.notesListContainer.innerHTML = this.notesListTemplateCompiled(this.service.getNotes(searchText, sortBy, filterBy));
     }
 
+    showModal() {
+        this.modalNewNote.style.display = 'grid';
+    }
+
+    hideModal() {
+        this.modalNewNote.style.display = 'none';
+    }
+
     initializeEventHandlers() {
         //https://developer.mozilla.org/en-US/docs/Web/Events
         this.styleDropdown.addEventListener('change', (event) => {
@@ -70,15 +80,36 @@ export class Controller {
         });
 
         this.filterNote.addEventListener('input', (event) => {
-            this.showNotesList()
+            this.showNotesList();
         });
 
         this.searchNote.addEventListener('change', (event) => {
-            this.showNotesList()
+            this.showNotesList();
         });
 
         this.sortNote.addEventListener('change', (event) => {
-            this.showNotesList()
+            this.showNotesList();
+        });
+
+        this.addNote.addEventListener('click', (event) => {
+            // Render empty modal view
+            this.showModal();
+        });
+
+        this.modalNewNote.addEventListener('click', (event) => {
+            switch (event.target.id) {
+                case 'modal-cancel':
+                    this.hideModal();
+                    //Remove entered data
+                    break;
+            }
+        });
+
+        this.notesListContainer.addEventListener('click', (event) => {
+            if (event.target.dataset.noteid) {
+                //Render current note in modal
+                this.showModal();
+            }
         });
     }
 
