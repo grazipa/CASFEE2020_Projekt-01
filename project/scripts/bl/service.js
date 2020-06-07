@@ -57,9 +57,7 @@ export class Service {
 
             case 'created':
                 for (let note of notes) {
-                    console.log(note);
                     let dateObject = new Date(note.dateCreated)
-                    console.log(dateObject);
                     let title = 'Date created: ' + dateObject.toLocaleDateString();
 
                     if (title in notesDict) {
