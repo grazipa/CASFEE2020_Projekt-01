@@ -1,10 +1,12 @@
 import {notesListTemplate} from './notes-list-template.js';
+import {noteModalTemplate} from './note-modal-template.js';
 
 export class Controller {
     constructor(service) {
         this.service = service;
 
         this.notesListTemplateCompiled = Handlebars.compile(notesListTemplate);
+        this.noteModalTemplateCompiled = Handlebars.compile(noteModalTemplate);
 
         this.notesListContainer = document.getElementById('notes-list-container');
         this.styleDropdown = document.getElementById('style-dropdown');
@@ -13,7 +15,7 @@ export class Controller {
         this.sortNote = document.getElementById('sort-note');
         this.filterNote = document.getElementById('filter-note');
         this.addNote = document.getElementById('add-note');
-        this.modalNewNote = document.getElementById('modal-new-note');
+        this.modalNote = document.getElementById('modal-note');
     }
 
     getPreferredStyle() {
@@ -66,11 +68,14 @@ export class Controller {
     }
 
     showModal() {
-        this.modalNewNote.style.display = 'grid';
+        //Add data
+        this.modalNote.innerHTML = this.noteModalTemplateCompiled();
+        this.modalNote.style.display = 'grid';
     }
 
     hideModal() {
-        this.modalNewNote.style.display = 'none';
+        //Clear data
+        this.modalNote.style.display = 'none';
     }
 
     initializeEventHandlers() {
@@ -96,7 +101,7 @@ export class Controller {
             this.showModal();
         });
 
-        this.modalNewNote.addEventListener('click', (event) => {
+        this.modalNote.addEventListener('click', (event) => {
             switch (event.target.id) {
                 case 'modal-cancel':
                     this.hideModal();
@@ -105,8 +110,8 @@ export class Controller {
             }
         });
 
-        this.notesListContainer.addEventListener('click', (event) => {
-            if (event.target.dataset.noteid) {
+        this.notesListContainer.addEventListener('dblclick', (event) => {
+            if (event.target.dataset.noteId) {
                 //Render current note in modal
                 this.showModal();
             }
