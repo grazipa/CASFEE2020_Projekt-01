@@ -35,11 +35,7 @@ export const notesListTemplate = `
 
         <!-- start content-card-footer -->
         <footer data-note-id="{{id}}" class="content-card-footer">
-            {{#if finished}}
-            <input data-note-id="{{id}}" type="checkbox" id="finishedNotes-{{id}}" name="finishedNotes-{{id}}" value="finishedNotes" checked>
-            {{else}}
-            <input data-note-id="{{id}}" type="checkbox" id="finishedNotes-{{id}}" name="finishedNotes-{{id}}" value="finishedNotes">
-            {{/if}}
+            <input data-note-id="{{id}}" type="checkbox" id="finishedNotes-{{id}}" name="finishedNotes-{{id}}" value="finishedNotes" {{#if finished}}checked{{/if}}>
             <label for="finishedNotes-{{id}}">Finished</label>
         </footer>
         <!-- end content-card-footer -->

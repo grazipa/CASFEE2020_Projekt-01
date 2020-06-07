@@ -176,17 +176,13 @@ html, body {
     "title title title"
     "priority duedate ."
     "note note note"
-    "finishedcheckbox finisheddate ."
+    "finishedcheckbox . ."
     "button button .";
     gap: 5px;
 }
 
 .modal-content-form-finishedcheckbox {
     grid-area: finishedcheckbox;
-}
-
-.modal-content-form-finisheddate {
-    grid-area: finisheddate;
 }
 
 .modal-content-form-title {

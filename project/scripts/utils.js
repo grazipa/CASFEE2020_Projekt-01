@@ -15,8 +15,22 @@ function getUUID() {
 
 // Extend Handlebars
 Handlebars.registerHelper('times', function(n, block) {
-    var accum = '';
-    for(var i = 0; i < n; ++i)
+    let accum = '';
+
+    for (let i = 0; i < n; i ++) {
         accum += block.fn(i);
+    }
+
     return accum;
 });
+
+Handlebars.registerHelper('ifEquals', function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
+
+// Convert date to ISO 8601 format
+function convertDateToIso(date) {
+    date = new Date(date);
+    return date.toISOString().substring(0, 10);
+} 

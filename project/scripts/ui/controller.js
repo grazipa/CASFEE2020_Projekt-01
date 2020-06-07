@@ -67,14 +67,24 @@ export class Controller {
         this.notesListContainer.innerHTML = this.notesListTemplateCompiled(this.service.getNotes(searchText, sortBy, filterBy));
     }
 
-    showModal() {
-        //Add data
-        this.modalNote.innerHTML = this.noteModalTemplateCompiled();
+    showModal(mode, note = null) {
+        const settings = {};
+        if (mode == 'edit') {
+            settings['mode'] = 'Edit';
+            settings['title'] = note.title;
+            settings['priority'] = note.priority;
+            settings['note'] = note.note;
+            settings['dueDate'] = convertDateToIso(note.dueDate);
+            settings['finished'] = note.finished;
+        } else {
+            settings['mode'] = 'Add';
+        }
+        
+        this.modalNote.innerHTML = this.noteModalTemplateCompiled(settings);
         this.modalNote.style.display = 'grid';
     }
 
     hideModal() {
-        //Clear data
         this.modalNote.style.display = 'none';
     }
 
@@ -97,26 +107,21 @@ export class Controller {
         });
 
         this.addNote.addEventListener('click', (event) => {
-            // Render empty modal view
-            this.showModal();
+            this.showModal('add');
         });
 
         this.modalNote.addEventListener('click', (event) => {
             switch (event.target.id) {
                 case 'modal-cancel':
                     this.hideModal();
-                    //Remove entered data
                     break;
             }
         });
 
         this.notesListContainer.addEventListener('dblclick', (event) => {
             if (event.target.dataset.noteId) {
-                //Render current note in modal
-                this.showModal();
+                this.showModal('edit', this.service.getNoteById(event.target.dataset.noteId));
             }
-
-            console.log(event.target.id);
         });
 
         this.notesListContainer.addEventListener('change', (event) => {

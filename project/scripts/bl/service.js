@@ -7,6 +7,10 @@ export class Service {
         this.loadData();
     }
 
+    getNoteById(id) {
+        return this.notes.find(n => n.id == id);
+    }
+
     loadData() {
         this.notes = this.storage.getAll().map(n => new Note(n.id, n.title, n.priority, n.dueDate, n.note, n.finished, n.dateFinished, n.dateCreated));
     }
