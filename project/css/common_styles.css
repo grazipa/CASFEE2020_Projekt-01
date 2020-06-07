@@ -53,8 +53,8 @@ html, body {
     grid-area: sort;
 }
 
-.main-nav-show {
-    grid-area: show;
+.main-nav-filter {
+    grid-area: filter;
 }
 
 .main-nav-button {

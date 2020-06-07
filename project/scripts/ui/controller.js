@@ -9,6 +9,9 @@ export class Controller {
         this.notesListContainer = document.getElementById('notes-list-container');
         this.styleDropdown = document.getElementById('style-dropdown');
         this.stylesheet = document.getElementById('stylesheet');
+        this.searchNote = document.getElementById('search-note');
+        this.sortNote = document.getElementById('sort-note');
+        this.filterNote = document.getElementById('filter-note');
     }
 
     getPreferredStyle() {
@@ -17,7 +20,6 @@ export class Controller {
             preferredStyle = document.cookie.split('; ').find(row => row.startsWith('style')).split('=')[1];
         }
 
-        preferredStyle = preferredStyle !== '' ? preferredStyle : 'Grey-Mode';
         return preferredStyle;
     }
 
@@ -43,7 +45,6 @@ export class Controller {
                 break;
             
             default:
-                console.error(`Style '${style}' is not defined!`);
                 href = './css/grey_styles.css'
                 selectedIndex = 0;
                 style = 'Grey-Mode';
@@ -56,12 +57,28 @@ export class Controller {
     }
 
     showNotesList() {
-        this.notesListContainer.innerHTML = this.notesListTemplateCompiled();
+        const searchText = this.searchNote.value;
+        const sortBy = this.sortNote[this.sortNote.selectedIndex].value;
+        const filterBy = this.filterNote[this.filterNote.selectedIndex].value;
+        this.notesListContainer.innerHTML = this.notesListTemplateCompiled(this.service.getNotes(searchText, sortBy, filterBy));
     }
 
     initializeEventHandlers() {
+        //https://developer.mozilla.org/en-US/docs/Web/Events
         this.styleDropdown.addEventListener('change', (event) => {
             this.setStylesheet(this.styleDropdown[this.styleDropdown.selectedIndex].text);
+        });
+
+        this.filterNote.addEventListener('input', (event) => {
+            this.showNotesList()
+        });
+
+        this.searchNote.addEventListener('change', (event) => {
+            this.showNotesList()
+        });
+
+        this.sortNote.addEventListener('change', (event) => {
+            this.showNotesList()
         });
     }
 
@@ -72,7 +89,6 @@ export class Controller {
     startApplication() {
         this.setStylesheet(this.getPreferredStyle());
         this.initializeEventHandlers();
-        this.service.loadData();
         this.renderView();
     }
 }

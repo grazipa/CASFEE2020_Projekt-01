@@ -29,7 +29,7 @@
     --main-nav_grid-template-areas:
         "search"
         "sort"
-        "show"
+        "filter"
         "button";
     
     /* main-content-card-header */

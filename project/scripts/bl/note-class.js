@@ -1,6 +1,6 @@
 export class Note {
-    constructor(title = 'This is the note title', priority = 1, dueDate = (getUnixTimestamp() + 86400), note = 'This is the note body.', finished = false, dateFinished = '-', dateCreated = getUnixTimestamp()) {
-      this.id = uuidv4();
+    constructor(id = uuidv4(), title = 'This is the note title', priority = 1, dueDate = (getUnixTimestamp() + 86400), note = 'This is the note body.', finished = false, dateFinished = null, dateCreated = getUnixTimestamp()) {
+      this.id = id;
       this.title = title;
       this.priority = priority;
       this.dueDate = dueDate;

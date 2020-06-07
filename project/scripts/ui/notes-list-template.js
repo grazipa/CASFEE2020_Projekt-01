@@ -7,7 +7,7 @@ export const notesListTemplate = `
 
     <!-- start main-content-card-header -->
     <header class="main-content-card-header">
-        {{text}}
+        {{title}}
     </header>
     <!-- end main-content-card-header -->
 
