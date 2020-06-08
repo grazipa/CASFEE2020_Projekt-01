@@ -124,43 +124,27 @@ export class Controller {
                     this.showNotesList();
                     this.hideModal();
                     break;
-
-                case 'modal-save':
-                    this.modalNoteTitle = document.getElementById('modal-note-title');
-                    this.modalNotePriority = document.getElementById('modal-note-priority');
-                    this.modalNoteNote = document.getElementById('modal-note-note');
-                    this.modalNoteFinished = document.getElementById('modal-note-finished');
-                    this.modalNoteDueDate = document.getElementById('modal-note-duedate');
-                    
-                    if (event.target.dataset.noteId) {
-                        this.service.editNote(event.target.dataset.noteId, this.modalNoteTitle.value, this.modalNotePriority.options[this.modalNotePriority.selectedIndex].value, Date.parse(this.modalNoteDueDate.value), this.modalNoteNote.value, this.modalNoteFinished.checked, this.modalNoteFinished.checked ? getUnixTimestamp() : null);
-                    } else {
-                        this.service.newNote(this.modalNoteTitle.value, this.modalNotePriority.options[this.modalNotePriority.selectedIndex].value, Date.parse(this.modalNoteDueDate.value), this.modalNoteNote.value, this.modalNoteFinished.checked, this.modalNoteFinished.checked ? getUnixTimestamp() : null);
-                    }
-                    this.showNotesList();
-                    this.hideModal();
-                    break;
             }            
         });
 
-        //this.modalNote.addEventListener('submit', (event) => {
-        //    this.modalNoteTitle = document.getElementById('modal-note-title');
-        //    this.modalNotePriority = document.getElementById('modal-note-priority');
-        //    this.modalNoteNote = document.getElementById('modal-note-note');
-        //    this.modalNoteFinished = document.getElementById('modal-note-finished');
-        //    this.modalNoteDueDate = document.getElementById('modal-note-duedate');
-        //    
-        //    console.log(event);
-        //    if (event.target.dataset.noteId) {
-        //        this.service.editNote(event.target.dataset.noteId, this.modalNoteTitle.value, this.modalNotePriority.options[this.modalNotePriority.selectedIndex].value, Date.parse(this.modalNoteDueDate.value), this.modalNoteNote.value, this.modalNoteFinished.checked, this.modalNoteFinished.checked ? getUnixTimestamp() : null);
-        //    } else {
-        //        this.service.newNote(this.modalNoteTitle.value, this.modalNotePriority.options[this.modalNotePriority.selectedIndex].value, Date.parse(this.modalNoteDueDate.value), this.modalNoteNote.value, this.modalNoteFinished.checked, this.modalNoteFinished.checked ? getUnixTimestamp() : null);
-        //    }
-//
-        //    event.preventDefault();
-        //    this.showNotesList();
-        //    this.hideModal();
-        //});
+        this.modalNote.addEventListener('submit', (event) => {
+            const modalNoteId = document.activeElement.dataset.noteId;
+            const modalNoteTitle = document.getElementById('modal-note-title').value;
+            const modalNotePriority = document.getElementById('modal-note-priority').options[document.getElementById('modal-note-priority').selectedIndex].value;
+            const modalNoteNote = document.getElementById('modal-note-note').value;
+            const modalNoteFinished = document.getElementById('modal-note-finished').checked;
+            const modalNoteDueDate= Date.parse(document.getElementById('modal-note-duedate').value);
+            
+            if (modalNoteId) {
+                this.service.editNote(modalNoteId, modalNoteTitle, modalNotePriority, modalNoteDueDate, modalNoteNote, modalNoteFinished, modalNoteFinished ? getUnixTimestamp() : null);
+            } else {
+                this.service.newNote(modalNoteTitle, modalNotePriority, modalNoteDueDate, modalNoteNote, modalNoteFinished, modalNoteFinished ? getUnixTimestamp() : null);
+            }
+            
+            event.preventDefault();
+            this.showNotesList();
+            this.hideModal();
+        });
 
         this.notesListContainer.addEventListener('dblclick', (event) => {
             if (event.target.dataset.noteId) {
