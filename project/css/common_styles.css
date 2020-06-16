@@ -108,6 +108,10 @@ html, body {
     width: 250px;    
 }
 
+#modal-note-title {
+    width: 261px;
+}
+
 .content-card-header {
     border-bottom: 2px solid black;
     padding: 5px;

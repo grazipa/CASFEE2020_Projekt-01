@@ -13,7 +13,7 @@ export class Service {
             // Shorten title if to long
             title = title.length > 30 ? title.substring(0, 30) : title;
 
-            n.title = title.length > 30 ? title.substring(0, 30) : title;
+            n.title = title;
             n.priority = priority;
             n.dueDate = dueDate;
             n.note = note;
