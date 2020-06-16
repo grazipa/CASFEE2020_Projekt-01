@@ -1,5 +1,8 @@
+'use strict';
+
 import {notesListTemplate} from './notes-list-template.js';
 import {noteModalTemplate} from './note-modal-template.js';
+import {convertDateToIso, getUnixTimestamp} from '../utils.js';
 
 export class Controller {
     constructor(service) {
@@ -93,23 +96,23 @@ export class Controller {
 
     initializeEventHandlers() {
         //https://developer.mozilla.org/en-US/docs/Web/Events
-        this.styleDropdown.addEventListener('change', (event) => {
+        this.styleDropdown.addEventListener('change', () => {
             this.setStylesheet(this.styleDropdown[this.styleDropdown.selectedIndex].text);
         });
 
-        this.filterNote.addEventListener('input', (event) => {
+        this.filterNote.addEventListener('input', () => {
             this.showNotesList();
         });
 
-        this.searchNote.addEventListener('change', (event) => {
+        this.searchNote.addEventListener('change', () => {
             this.showNotesList();
         });
 
-        this.sortNote.addEventListener('change', (event) => {
+        this.sortNote.addEventListener('change', () => {
             this.showNotesList();
         });
 
-        this.addNote.addEventListener('click', (event) => {
+        this.addNote.addEventListener('click', () => {
             this.showModal('add');
         });
 

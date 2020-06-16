@@ -1,3 +1,6 @@
+'use strict';
+
+import {getUUID, getUnixTimestamp} from '../utils.js';
 import {Note} from './note-class.js';
 
 export class Service {

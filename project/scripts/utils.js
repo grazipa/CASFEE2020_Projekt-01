@@ -34,3 +34,6 @@ function convertDateToIso(date) {
     date = new Date(date);
     return date.toISOString().substring(0, 10);
 } 
+
+// Export the funtions
+export { getUnixTimestamp, getUUID, convertDateToIso};

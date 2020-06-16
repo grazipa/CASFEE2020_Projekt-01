@@ -3,8 +3,7 @@ module.exports = {
         "browser": true,
         "es6": true
     },
-    "extends": ["airbn", "prettier", "eslint:recommended"],
-    "plugins": ["prettier"],
+    "extends": "eslint:recommended",
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"

@@ -1,5 +1,7 @@
 'use strict';
 
+import {getUUID} from '../utils.js';
+
 export class Storage {
     constructor() {
         this.storageName = 'notesStorage'
