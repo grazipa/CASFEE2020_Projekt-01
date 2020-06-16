@@ -3,7 +3,7 @@
 export class Storage {
     constructor() {
         this.storageName = 'notesStorage'
-        //this.mockdata();
+        this.mockdata();
         this.notes = JSON.parse(localStorage.getItem(this.storageName) || '[]');
     }
 

@@ -10,7 +10,10 @@ export class Service {
     editNote(id, title, priority, dueDate, note, finished, dateFinished) {
         const n = this.notes.find(n => n.id == id);
         if (n) {
-            n.title = title;
+            // Shorten title if to long
+            title = title.length > 30 ? title.substring(0, 30) : title;
+
+            n.title = title.length > 30 ? title.substring(0, 30) : title;
             n.priority = priority;
             n.dueDate = dueDate;
             n.note = note;
@@ -23,6 +26,9 @@ export class Service {
     }
 
     newNote(title, priority, dueDate, note, finished, dateFinished) {
+        // Shorten title if to long
+        title = title.length > 30 ? title.substring(0, 30) : title;
+
         const n = new Note(getUUID(), title, priority, dueDate, note, finished, dateFinished, getUnixTimestamp())
         this.notes.push(n);
         this.save();

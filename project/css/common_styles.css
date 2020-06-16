@@ -113,10 +113,15 @@ html, body {
     padding: 5px;
     font-weight: bold;
     font-size: large;
+    word-break: break-word;
+    overflow: hidden;
 }
 
 .content-card-body {
     background-color: white;
+    padding: 5px;
+    word-break: break-word;
+    overflow: hidden;
 }
 
 .content-card-footer {
@@ -173,7 +178,7 @@ html, body {
     grid-template-columns: auto auto 1fr;
     grid-template-rows: auto auto auto auto auto;
     grid-template-areas:
-    "title title title"
+    "title title ."
     "priority duedate ."
     "note note note"
     "finishedcheckbox . ."
