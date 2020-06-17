@@ -1,6 +1,6 @@
 'use strict';
 
-import {getUUID} from '../utils.js';
+import {getUUID} from '../helpers.js';
 
 export class Storage {
     constructor() {

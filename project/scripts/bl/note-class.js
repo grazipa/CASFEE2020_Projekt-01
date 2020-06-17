@@ -1,6 +1,6 @@
 'use strict';
 
-import {getUUID, getUnixTimestamp} from '../utils.js';
+import {getUUID, getUnixTimestamp} from '../helpers.js';
 
 export class Note {
   constructor(id = getUUID(), title = 'This is the note title', priority = 1, dueDate = (getUnixTimestamp() + 86400), note = 'This is the note body.', finished = false, dateFinished = null, dateCreated = getUnixTimestamp()) {

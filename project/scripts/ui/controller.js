@@ -2,7 +2,7 @@
 
 import {notesListTemplate} from './notes-list-template.js';
 import {noteModalTemplate} from './note-modal-template.js';
-import {convertDateToIso, getUnixTimestamp} from '../utils.js';
+import {convertDateToIso, getUnixTimestamp} from '../helpers.js';
 
 export class Controller {
     constructor(service) {
