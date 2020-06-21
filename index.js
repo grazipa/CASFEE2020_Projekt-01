@@ -1,11 +1,13 @@
 import express from 'express';
 import path from 'path';
 import {notFoundRoutes} from './routes/notFoundRoutes.js';
+import {noteRoutes} from './routes/noteRoutes.js';
 
 const app = express();
 
 app.use(express.static(path.resolve('public/html')));
 app.use(express.static(path.resolve('public')));
+app.use('/notes', noteRoutes);
 app.use(notFoundRoutes);
 app.use(function(err, req, res, next) {
     console.error(err.stack);
