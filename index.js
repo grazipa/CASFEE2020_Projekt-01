@@ -1,13 +1,12 @@
 import express from 'express';
 import path from 'path';
-
-import {indexRoutes} from './routes/indexRoutes.js';
+import {notFoundRoutes} from './routes/notFoundRoutes.js';
 
 const app = express();
 
 app.use(express.static(path.resolve('public/html')));
 app.use(express.static(path.resolve('public')));
-app.use('/', indexRoutes);
+app.use(notFoundRoutes);
 
 const hostname = '127.0.0.1';
 const port = 3001;
