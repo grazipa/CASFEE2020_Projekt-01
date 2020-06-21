@@ -1,14 +1,17 @@
 import express from 'express';
 import path from 'path';
 
+import {indexRoutes} from './routes/indexRoutes.js';
+
 const app = express();
 
 app.use(express.static(path.resolve('public/html')));
 app.use(express.static(path.resolve('public')));
+app.use("/", indexRoutes);
 
-app.get('/', function (req, res) {
-    res.sendFile("/html/index.html",  {root: __dirname + '/public/'});
-});
+//app.get('/', function (req, res) {
+//    res.sendFile("/html/index.html",  {root: __dirname + '/public/'});
+//});
 
 
 const hostname = '127.0.0.1';
