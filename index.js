@@ -7,6 +7,10 @@ const app = express();
 app.use(express.static(path.resolve('public/html')));
 app.use(express.static(path.resolve('public')));
 app.use(notFoundRoutes);
+app.use(function(err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send(err.stack);
+  });
 
 const hostname = '127.0.0.1';
 const port = 3001;
