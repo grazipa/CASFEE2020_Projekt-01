@@ -7,12 +7,7 @@ const app = express();
 
 app.use(express.static(path.resolve('public/html')));
 app.use(express.static(path.resolve('public')));
-app.use("/", indexRoutes);
-
-//app.get('/', function (req, res) {
-//    res.sendFile("/html/index.html",  {root: __dirname + '/public/'});
-//});
-
+app.use('/', indexRoutes);
 
 const hostname = '127.0.0.1';
 const port = 3001;
