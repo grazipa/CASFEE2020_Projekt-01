@@ -65,11 +65,11 @@ export class Controller {
         this.setPreferredStyle(style);
     }
 
-    showNotesList() {
+    async showNotesList() {
         const searchText = this.searchNote.value;
         const sortBy = this.sortNote[this.sortNote.selectedIndex].value;
         const filterBy = this.filterNote[this.filterNote.selectedIndex].value;
-        this.notesListContainer.innerHTML = this.notesListTemplateCompiled(this.service.getNotes(searchText, sortBy, filterBy));
+        this.notesListContainer.innerHTML = this.notesListTemplateCompiled(await this.service.getNotes(searchText, sortBy, filterBy));
     }
 
     showModal(mode, note = null) {

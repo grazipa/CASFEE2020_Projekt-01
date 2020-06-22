@@ -7,7 +7,6 @@ export class Service {
     constructor(storage) {
         this.storage = storage;
         this.notes = [];
-        this.loadData();
     }
 
     editNote(id, title, priority, dueDate, note, finished, dateFinished) {
@@ -28,13 +27,10 @@ export class Service {
         this.save();
     }
 
-    newNote(title, priority, dueDate, note, finished, dateFinished) {
-        // Shorten title if to long
+    async newNote(title, priority, dueDate, note, finished, dateFinished) {
         title = title.length > 30 ? title.substring(0, 30) : title;
-
-        const n = new Note(getUUID(), title, priority, dueDate, note, finished, dateFinished, getUnixTimestamp())
-        this.notes.push(n);
-        this.save();
+        const n = new Note(null, title, priority, dueDate, note, finished, dateFinished, getUnixTimestamp())
+        await this.storage.newNote(n);
     }
 
     removeNoteById(id) {
@@ -43,11 +39,12 @@ export class Service {
     }
 
     getNoteById(id) {
+        this.loadData();
         return this.notes.find(n => n.id == id);
     }
 
-    loadData() {
-        this.notes = this.storage.getAll().map(n => new Note(n.id, n.title, n.priority, n.dueDate, n.note, n.finished, n.dateFinished, n.dateCreated));
+    async loadData() {
+        this.notes = (await this.storage.getNotes()).map(n => new Note(n.id, n.title, n.priority, n.dueDate, n.note, n.finished, n.dateFinished, n.dateCreated));
     }
 
     setNoteFinished(id, finished) {
@@ -74,7 +71,8 @@ export class Service {
         this.storage.update(this.notes.map(n => n.toJSON()));
     }
 
-    getNotesFilteredBy(filterBy) {
+    async getNotesFilteredBy(filterBy) {
+        await this.loadData();
         filterBy = ['open', 'finished', 'all'].includes(filterBy) ? filterBy: 'open';
 
         switch (filterBy) {
@@ -89,8 +87,8 @@ export class Service {
         }
     }
 
-    getNotes(searchText, sortBy, filterBy) {    
-        let notes = this.getNotesFilteredBy(filterBy);
+    async getNotes(searchText, sortBy, filterBy) {    
+        let notes = await this.getNotesFilteredBy(filterBy);
         if (searchText !== '') {
             notes = notes.filter(n => (n.title.includes(searchText)) || (n.note.includes(searchText)));
         }
