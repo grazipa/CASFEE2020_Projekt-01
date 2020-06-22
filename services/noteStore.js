@@ -13,10 +13,6 @@ export class Note {
 }
 
 export class NoteStore {
-    //constructor(db) {
-    //    this.db = db || new Datastore({filename: './data/notes.db', autoload: true});
-    //}
-
     constructor() {
         this.db = new Datastore({filename: './data/notes.db', autoload: true});
     }
@@ -28,6 +24,10 @@ export class NoteStore {
     async newNote(title, priority, dueDate, note, finished, dateFinished) {
         const n = new Note(title, priority, dueDate, note, finished, dateFinished);
         return await this.db.insert(n);
+    }
+
+    async deleteNote(id) {
+        return await this.db.remove({ _id: id });
     }
 }
 

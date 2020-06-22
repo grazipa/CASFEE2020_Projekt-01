@@ -33,18 +33,17 @@ export class Service {
         await this.storage.newNote(n);
     }
 
-    removeNoteById(id) {
-        this.notes = this.notes.filter(n => n.id != id);
-        this.save();
+    async removeNoteById(id) {
+        await this.storage.deleteNote(id);
     }
 
     getNoteById(id) {
         this.loadData();
-        return this.notes.find(n => n.id == id);
+        return this.notes.find(n => n._id == id);
     }
 
     async loadData() {
-        this.notes = (await this.storage.getNotes()).map(n => new Note(n.id, n.title, n.priority, n.dueDate, n.note, n.finished, n.dateFinished, n.dateCreated));
+        this.notes = (await this.storage.getNotes()).map(n => new Note(n._id, n.title, n.priority, n.dueDate, n.note, n.finished, n.dateFinished, n.dateCreated));
     }
 
     setNoteFinished(id, finished) {

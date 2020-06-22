@@ -10,4 +10,8 @@ export class Storage {
     async newNote(note) {
         return await httpService.ajax('POST', '/notes', note.toJSON());
     }
+
+    async deleteNote(id) {
+        return await httpService.ajax('DELETE', `/notes/${id}`, undefined);
+    }
 }

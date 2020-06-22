@@ -81,7 +81,7 @@ export class Controller {
             settings['note'] = note.note;
             settings['dueDate'] = convertDateToIso(note.dueDate);
             settings['finished'] = note.finished;
-            settings['id'] = note.id;
+            settings['_id'] = note._id;
         } else {
             settings['mode'] = 'Add';
         }
@@ -116,14 +116,14 @@ export class Controller {
             this.showModal('add');
         });
 
-        this.modalNote.addEventListener('click', (event) => {
+        this.modalNote.addEventListener('click', async (event) => {
             switch (event.target.id) {
                 case 'modal-cancel':
                     this.hideModal();
                     break;
                 
                 case 'modal-remove':
-                    this.service.removeNoteById(event.target.dataset.noteId);
+                    await this.service.removeNoteById(event.target.dataset.noteId);
                     this.showNotesList();
                     this.hideModal();
                     break;
@@ -149,9 +149,9 @@ export class Controller {
             this.hideModal();
         });
 
-        this.notesListContainer.addEventListener('dblclick', (event) => {
+        this.notesListContainer.addEventListener('dblclick', async (event) => {
             if (event.target.dataset.noteId) {
-                this.showModal('edit', this.service.getNoteById(event.target.dataset.noteId));
+                this.showModal('edit', (await this.service.getNoteById(event.target.dataset.noteId)));
             }
         });
 

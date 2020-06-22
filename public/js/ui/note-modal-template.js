@@ -43,10 +43,10 @@ export const noteModalTemplate = `
 
     <div class="modal-content-form-button">
         {{#ifEquals 'Edit' mode}}
-        <button data-note-id="{{id}}" id="modal-remove" type="button"><i class="fas fa-trash-alt"></i> Remove</button>
+        <button data-note-id="{{_id}}" id="modal-remove" type="button"><i class="fas fa-trash-alt"></i> Remove</button>
         {{/ifEquals}}
         <button id="modal-cancel" type="button"><i class="far fa-window-close"></i> Cancel</button>
-        <button data-note-id="{{id}}" id="modal-save" type="submit"><i class="fas fa-save"></i> Save</button>
+        <button data-note-id="{{_id}}" id="modal-save" type="submit"><i class="fas fa-save"></i> Save</button>
     </div>
 </form>
 
