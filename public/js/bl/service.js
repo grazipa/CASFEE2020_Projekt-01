@@ -23,8 +23,6 @@ export class Service {
             n.title = title;
             n.dateFinished = dateFinished;
         }
-
-        this.save();
     }
 
     async newNote(title, priority, dueDate, note, finished, dateFinished) {
@@ -37,9 +35,9 @@ export class Service {
         await this.storage.deleteNote(id);
     }
 
-    getNoteById(id) {
-        this.loadData();
-        return this.notes.find(n => n._id == id);
+    async getNoteById(id) {
+        const n = await this.storage.getNote(id);
+        return new Note(n._id, n.title, n.priority, n.dueDate, n.note, n.finished, n.dateFinished, n.dateCreated);
     }
 
     async loadData() {
@@ -63,11 +61,6 @@ export class Service {
                     break;
             }
         }
-        this.save();
-    }
-
-    save() {
-        this.storage.update(this.notes.map(n => n.toJSON()));
     }
 
     async getNotesFilteredBy(filterBy) {

@@ -17,7 +17,7 @@ export class NoteStore {
         this.db = new Datastore({filename: './data/notes.db', autoload: true});
     }
 
-    async all() {
+    async getNotes() {
         return await this.db.cfind({}).exec();
     }
 
@@ -28,6 +28,10 @@ export class NoteStore {
 
     async deleteNote(id) {
         return await this.db.remove({ _id: id });
+    }
+
+    async getNote(id) {
+        return await this.db.findOne({ _id: id });
     }
 }
 

@@ -14,4 +14,8 @@ export class Storage {
     async deleteNote(id) {
         return await httpService.ajax('DELETE', `/notes/${id}`, undefined);
     }
+
+    async getNote(id) {
+        return await httpService.ajax('GET', `/notes/${id}`, undefined);
+    }
 }

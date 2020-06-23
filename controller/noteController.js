@@ -2,7 +2,7 @@ import {noteStore} from '../services/noteStore.js';
 
 export class NoteController {
     async getNotes(req, res) {
-        res.json((await noteStore.all() || []))
+        res.json((await noteStore.getNotes() || []))
     };
 
     async newNote(req, res) {
@@ -11,6 +11,10 @@ export class NoteController {
 
     async deleteNote(req, res) {
         res.json(await noteStore.deleteNote(req.params.id));
+    };
+
+    async getNote(req, res) {
+        res.json(await noteStore.getNote(req.params.id));
     };
 }
 

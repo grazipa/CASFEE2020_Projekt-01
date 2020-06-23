@@ -5,5 +5,6 @@ const router = express.Router();
 router.get('/', noteController.getNotes);
 router.post('/', noteController.newNote);
 router.delete('/:id/', noteController.deleteNote);
+router.get('/:id/', noteController.getNote);
 
 export const noteRoutes = router;
