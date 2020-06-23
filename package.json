@@ -23,5 +23,8 @@
     "express": "^4.17.1",
     "nedb": "^1.8.0",
     "nedb-promise": "^2.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.3.1"
   }
 }
