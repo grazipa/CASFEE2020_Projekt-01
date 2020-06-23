@@ -22,4 +22,8 @@ export class Storage {
     async editNote(note) {
         return await httpService.ajax('PUT', `/notes/${note._id}`, note.toJSON());
     }
+
+    async setNoteFinished(id, finished, dateFinished) {
+        return await httpService.ajax('PATCH', `/notes/${id}`, { id: id, finished: finished, dateFinished: dateFinished });
+    }
 }

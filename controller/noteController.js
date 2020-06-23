@@ -20,6 +20,10 @@ export class NoteController {
     async editNote(req, res) {
         res.json(await noteStore.editNote(req.body.id, req.body.title, req.body.priority, req.body.dueDate, req.body.note, req.body.finished, req.body.dateFinished));
     };
+
+    async finishNote(req, res) {
+        res.json(await noteStore.finishNote(req.body.id, req.body.finished, req.body.dateFinished));
+    };
 }
 
 export const noteController = new NoteController();

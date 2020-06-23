@@ -28,22 +28,9 @@ export class Service {
     }
 
     async setNoteFinished(id, finished) {
-        const note = await this.storage.getNote(id);
         finished = [true, false].includes(finished) ? finished: false;
-
-        if (note) {
-            switch (finished) {
-                case true:
-                    note.finished = finished;
-                    note.dateFinished = Date.now();
-                    break;
-                
-                case false:
-                    note.finished = finished;
-                    note.dateFinished = null;
-                    break;
-            }
-        }
+        const dateFinished = finished ? Date.now(): null;
+        const note = await this.storage.setNoteFinished(id, finished, dateFinished);
     }
 
     async getNotesFilteredBy(filterBy) {

@@ -154,9 +154,9 @@ export class Controller {
             }
         });
 
-        this.notesListContainer.addEventListener('change', (event) => {
+        this.notesListContainer.addEventListener('change', async (event) => {
             if (event.target.dataset.noteId) {
-                this.service.setNoteFinished(event.target.dataset.noteId, event.target.checked);
+                await this.service.setNoteFinished(event.target.dataset.noteId, event.target.checked);
                 this.showNotesList();
             }
         });
