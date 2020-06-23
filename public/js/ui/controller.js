@@ -18,8 +18,7 @@ export class Controller {
         this.sortNote = document.getElementById('sort-note');
         this.filterNote = document.getElementById('filter-note');
         this.addNote = document.getElementById('add-note');
-        
-        // Modal
+
         this.modalNote = document.getElementById('modal-note');        
     }
 
@@ -95,7 +94,6 @@ export class Controller {
     }
 
     initializeEventHandlers() {
-        //https://developer.mozilla.org/en-US/docs/Web/Events
         this.styleDropdown.addEventListener('change', () => {
             this.setStylesheet(this.styleDropdown[this.styleDropdown.selectedIndex].text);
         });
@@ -130,7 +128,9 @@ export class Controller {
             }            
         });
 
-        this.modalNote.addEventListener('submit', (event) => {
+        this.modalNote.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
             const modalNoteId = document.activeElement.dataset.noteId;
             const modalNoteTitle = document.getElementById('modal-note-title').value;
             const modalNotePriority = document.getElementById('modal-note-priority').options[document.getElementById('modal-note-priority').selectedIndex].value;
@@ -139,12 +139,11 @@ export class Controller {
             const modalNoteDueDate= Date.parse(document.getElementById('modal-note-duedate').value);
             
             if (modalNoteId) {
-                this.service.editNote(modalNoteId, modalNoteTitle, modalNotePriority, modalNoteDueDate, modalNoteNote, modalNoteFinished, modalNoteFinished ? getUnixTimestamp() : null);
+                await this.service.editNote(modalNoteId, modalNoteTitle, modalNotePriority, modalNoteDueDate, modalNoteNote, modalNoteFinished, modalNoteFinished ? getUnixTimestamp() : null);
             } else {
-                this.service.newNote(modalNoteTitle, modalNotePriority, modalNoteDueDate, modalNoteNote, modalNoteFinished, modalNoteFinished ? getUnixTimestamp() : null);
+                await this.service.newNote(modalNoteTitle, modalNotePriority, modalNoteDueDate, modalNoteNote, modalNoteFinished, modalNoteFinished ? getUnixTimestamp() : null);
             }
-            
-            event.preventDefault();
+
             this.showNotesList();
             this.hideModal();
         });

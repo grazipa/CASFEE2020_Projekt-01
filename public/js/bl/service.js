@@ -9,25 +9,13 @@ export class Service {
     }
 
     async editNote(id, title, priority, dueDate, note, finished, dateFinished) {
-        const note = await this.storage.getNote(id);
-        if (note) {
-            // Shorten title if to long
-            title = title.length > 30 ? title.substring(0, 30) : title;
-
-            note.title = title;
-            note.priority = priority;
-            note.dueDate = dueDate;
-            note.note = note;
-            note.finished = finished;
-            note.title = title;
-            note.dateFinished = dateFinished;
-        }
+        title = title.length > 30 ? title.substring(0, 30) : title;
+        await this.storage.editNote(new Note(id, title, priority, dueDate, note, finished, dateFinished, null));
     }
 
     async newNote(title, priority, dueDate, note, finished, dateFinished) {
         title = title.length > 30 ? title.substring(0, 30) : title;
-        const note = new Note(null, title, priority, dueDate, note, finished, dateFinished, getUnixTimestamp())
-        await this.storage.newNote(note);
+        await this.storage.newNote(new Note(null, title, priority, dueDate, note, finished, dateFinished, getUnixTimestamp()));
     }
 
     async removeNoteById(id) {
@@ -39,7 +27,7 @@ export class Service {
         return new Note(note._id, note.title, note.priority, note.dueDate, note.note, note.finished, note.dateFinished, note.dateCreated);
     }
 
-    setNoteFinished(id, finished) {
+    async setNoteFinished(id, finished) {
         const note = await this.storage.getNote(id);
         finished = [true, false].includes(finished) ? finished: false;
 

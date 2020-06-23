@@ -6,5 +6,6 @@ router.get('/', noteController.getNotes);
 router.post('/', noteController.newNote);
 router.delete('/:id/', noteController.deleteNote);
 router.get('/:id/', noteController.getNote);
+router.put('/:id/', noteController.editNote);
 
 export const noteRoutes = router;
