@@ -1,34 +1,33 @@
 'use strict';
 
-import {getUUID, getUnixTimestamp} from '../helpers.js';
+import {getUnixTimestamp} from '../helpers.js';
 import {Note} from './note-class.js';
 
 export class Service {
     constructor(storage) {
         this.storage = storage;
-        this.notes = [];
     }
 
-    editNote(id, title, priority, dueDate, note, finished, dateFinished) {
-        const n = this.notes.find(n => n.id == id);
-        if (n) {
+    async editNote(id, title, priority, dueDate, note, finished, dateFinished) {
+        const note = await this.storage.getNote(id);
+        if (note) {
             // Shorten title if to long
             title = title.length > 30 ? title.substring(0, 30) : title;
 
-            n.title = title;
-            n.priority = priority;
-            n.dueDate = dueDate;
-            n.note = note;
-            n.finished = finished;
-            n.title = title;
-            n.dateFinished = dateFinished;
+            note.title = title;
+            note.priority = priority;
+            note.dueDate = dueDate;
+            note.note = note;
+            note.finished = finished;
+            note.title = title;
+            note.dateFinished = dateFinished;
         }
     }
 
     async newNote(title, priority, dueDate, note, finished, dateFinished) {
         title = title.length > 30 ? title.substring(0, 30) : title;
-        const n = new Note(null, title, priority, dueDate, note, finished, dateFinished, getUnixTimestamp())
-        await this.storage.newNote(n);
+        const note = new Note(null, title, priority, dueDate, note, finished, dateFinished, getUnixTimestamp())
+        await this.storage.newNote(note);
     }
 
     async removeNoteById(id) {
@@ -36,18 +35,14 @@ export class Service {
     }
 
     async getNoteById(id) {
-        const n = await this.storage.getNote(id);
-        return new Note(n._id, n.title, n.priority, n.dueDate, n.note, n.finished, n.dateFinished, n.dateCreated);
-    }
-
-    async loadData() {
-        this.notes = (await this.storage.getNotes()).map(n => new Note(n._id, n.title, n.priority, n.dueDate, n.note, n.finished, n.dateFinished, n.dateCreated));
+        const note = await this.storage.getNote(id);
+        return new Note(note._id, note.title, note.priority, note.dueDate, note.note, note.finished, note.dateFinished, note.dateCreated);
     }
 
     setNoteFinished(id, finished) {
+        const note = await this.storage.getNote(id);
         finished = [true, false].includes(finished) ? finished: false;
 
-        const note = this.notes.find(n => n.id == id);
         if (note) {
             switch (finished) {
                 case true:
@@ -64,18 +59,18 @@ export class Service {
     }
 
     async getNotesFilteredBy(filterBy) {
-        await this.loadData();
+        let notes = (await this.storage.getNotes()).map(n => new Note(n._id, n.title, n.priority, n.dueDate, n.note, n.finished, n.dateFinished, n.dateCreated));
         filterBy = ['open', 'finished', 'all'].includes(filterBy) ? filterBy: 'open';
 
         switch (filterBy) {
             case 'open':
-                return this.notes.filter(n => n.finished === false);
+                return notes.filter(n => n.finished === false);
             
             case 'finished':
-                return this.notes.filter(n => n.finished === true);
+                return notes.filter(n => n.finished === true);
 
             case 'all':
-                return this.notes;
+                return notes;
         }
     }
 
