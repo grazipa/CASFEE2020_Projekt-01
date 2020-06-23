@@ -30,7 +30,7 @@ export class Service {
     async setNoteFinished(id, finished) {
         finished = [true, false].includes(finished) ? finished: false;
         const dateFinished = finished ? Date.now(): null;
-        const note = await this.storage.setNoteFinished(id, finished, dateFinished);
+        await this.storage.setNoteFinished(id, finished, dateFinished);
     }
 
     async getNotesFilteredBy(filterBy) {
