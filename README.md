@@ -1,4 +1,3 @@
-[[_TOC_]]
 # CASFEE2020_PROJEKT-01
 ## Installation & Start of application
 ```bash
