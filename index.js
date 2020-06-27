@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import {notFoundRoutes} from './routes/notFoundRoutes.js';
 import {noteRoutes} from './routes/noteRoutes.js';
+import io from 'socket.io';
 
 const app = express();
 
@@ -19,6 +20,9 @@ app.use(function(err, req, res, next) {
 const hostname = '127.0.0.1';
 const port = 3001;
 
-app.listen(port, function () {
+const server = app.listen(port, function () {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
+
+const socket = io(server);
+app.locals.socket = socket;

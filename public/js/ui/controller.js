@@ -23,6 +23,9 @@ export class Controller {
         this.modalLoader = document.getElementById('modal-loader');
 
         this.sessionStorage = sessionStorage;
+
+        this.socket = io();
+        this.socket.on('update', () => {this.showNotesList()});
     }
 
     setSesstionStorageValue(key, value) {
