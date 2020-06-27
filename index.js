@@ -5,6 +5,7 @@ import {notFoundRoutes} from './routes/notFoundRoutes.js';
 import {noteRoutes} from './routes/noteRoutes.js';
 import io from 'socket.io';
 
+// Set up app
 const app = express();
 
 app.use(express.static(path.resolve('public/html')));
@@ -17,6 +18,7 @@ app.use(function(err, req, res, next) {
     res.status(500).send(err.stack);
   });
 
+// Start server
 const hostname = '127.0.0.1';
 const port = 3001;
 
@@ -24,5 +26,6 @@ const server = app.listen(port, function () {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
 
+// Start socket.io
 const socket = io(server);
 app.locals.socket = socket;
