@@ -19,7 +19,8 @@ export class Controller {
         this.filterNote = document.getElementById('filter-note');
         this.addNote = document.getElementById('add-note');
 
-        this.modalNote = document.getElementById('modal-note');        
+        this.modalNote = document.getElementById('modal-note');
+        this.modalLoader = document.getElementById('modal-loader');
     }
 
     getPreferredStyle() {
@@ -164,6 +165,7 @@ export class Controller {
 
     renderView() {
         this.showNotesList();
+        this.modalLoader.style.display = 'none';
     }
 
     startApplication() {
