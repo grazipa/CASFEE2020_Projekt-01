@@ -7,12 +7,12 @@ export class NoteController {
 
     async newNote(req, res) {
         res.json(await noteStore.newNote(req.body.title, req.body.priority, req.body.dueDate, req.body.note, req.body.finished, req.body.dateFinished));
-        const socket = req.app.locals.socket;
-        socket.emit('update');
+        req.app.locals.socket.emit('update');
     };
 
     async deleteNote(req, res) {
         res.json(await noteStore.deleteNote(req.params.id));
+        req.app.locals.socket.emit('update');
     };
 
     async getNote(req, res) {
@@ -21,10 +21,12 @@ export class NoteController {
 
     async editNote(req, res) {
         res.json(await noteStore.editNote(req.body.id, req.body.title, req.body.priority, req.body.dueDate, req.body.note, req.body.finished, req.body.dateFinished));
+        req.app.locals.socket.emit('update');
     };
 
     async finishNote(req, res) {
         res.json(await noteStore.finishNote(req.body.id, req.body.finished, req.body.dateFinished));
+        req.app.locals.socket.emit('update');
     };
 }
 
