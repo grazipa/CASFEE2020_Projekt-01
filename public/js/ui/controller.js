@@ -21,6 +21,16 @@ export class Controller {
 
         this.modalNote = document.getElementById('modal-note');
         this.modalLoader = document.getElementById('modal-loader');
+
+        this.sessionStorage = sessionStorage;
+    }
+
+    setSesstionStorageValue(key, value) {
+        return this.sessionStorage.setItem(key, value)
+    }
+
+    getSesstionStorageValue(key) {
+        return this.sessionStorage.getItem(key)
     }
 
     getPreferredStyle() {
@@ -100,14 +110,17 @@ export class Controller {
         });
 
         this.filterNote.addEventListener('input', () => {
+            this.setSesstionStorageValue('filterNote', this.filterNote[this.filterNote.selectedIndex].value);
             this.showNotesList();
         });
 
         this.searchNote.addEventListener('change', () => {
+            this.setSesstionStorageValue('searchNote', this.searchNote.value);
             this.showNotesList();
         });
 
         this.sortNote.addEventListener('change', () => {
+            this.setSesstionStorageValue('sortNote', this.sortNote[this.sortNote.selectedIndex].value);
             this.showNotesList();
         });
 
@@ -163,7 +176,18 @@ export class Controller {
         });
     }
 
+    setUI() {
+        const searchNote = this.getSesstionStorageValue('searchNote');
+        const sortNote = this.getSesstionStorageValue('sortNote');
+        const filterNote = this.getSesstionStorageValue('filterNote');
+
+        this.searchNote.value = searchNote;
+        this.sortNote.value = sortNote !== null ? sortNote : 'priority';
+        this.filterNote.value = filterNote !== null ? filterNote : 'open';
+    }
+
     renderView() {
+        this.setUI();
         this.showNotesList();
         this.modalLoader.style.display = 'none';
     }

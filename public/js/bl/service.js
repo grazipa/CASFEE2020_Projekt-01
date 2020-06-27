@@ -49,7 +49,7 @@ export class Service {
         }
     }
 
-    async getNotes(searchText, sortBy, filterBy) {    
+    async getNotes(searchText = '', sortBy = 'priority', filterBy = 'open') {    
         let notes = await this.getNotesFilteredBy(filterBy);
         if (searchText !== '') {
             notes = notes.filter(n => (n.title.includes(searchText)) || (n.note.includes(searchText)));
